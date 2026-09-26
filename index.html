@@ -2224,8 +2224,10 @@
               화질로 렌더링됩니다.</p>
             <p style="margin-top: 4px;"><strong>APNG 미리보기 관련:</strong><br>프리뷰 재생 중 프레임이 깜빡이거나 일부 깨져 보일 수 있으나, 이는 화면 렌더링
               부하를 줄이기 위한 것으로 실제 저장되는 최종 파일에는 전혀 문제가 없으니 안심하고 다운로드해 주세요.</p>
+		    <p style="margin-top: 4px;"><strong>zip 압축해제 관련:</strong><br>Windows 기본 압축 해제 기능 사용 시 오류가 발생 할 수 있습니다.<br>정상적인 파일 확인을 위해 반디집, 알집 등의 압축 프로그램 사용을 권장합니다.
+</p>	  
             <p style="margin-top: 4px;"><strong>기능 건의 안내:</strong><br>코코포리아를 거치지 않고 자체적으로 맵을 생성/제작하는 기능은 코코포리아 공식 서비스의
-              정책 및 유료 영역을 침해할 수 있어 건의를 받지 않습니다. 양해 부탁드립니다.</p>
+              정책 및 유료 영역을 침해할 수 있어 해당 건의를 받지 않습니다. 양해 부탁드립니다.<br>그 외 기능 제안 및 버그리포트는 언제든지!</p>
             <p style="margin-top: 4px;"><strong>문의:</strong><br><a href="https://open.kakao.com/o/s36mrXAf">오픈카톡 링크</a>
             </p>
           </div>
@@ -3385,13 +3387,26 @@
 
         const info = document.createElement('div');
         info.className = 'grid-tile-info';
-        info.innerHTML = `
-          <div class="grid-tile-name" title="${filename}">${fileData.layerName || filename.split('/').pop()}</div>
-          <div class="grid-tile-meta">
-            <span>${fileData.width}×${fileData.height}</span>
-            <span>${fileData.isApng ? fileData.apngData.frames.length + ' F' : state.mode === 'psd' ? 'Layer' : 'Static'}</span>
-          </div>
-        `;
+
+        const nameEl = document.createElement('div');
+        nameEl.className = 'grid-tile-name';
+        nameEl.title = filename;
+        nameEl.textContent = fileData.layerName || filename.split('/').pop();
+
+        const metaEl = document.createElement('div');
+        metaEl.className = 'grid-tile-meta';
+
+        const metaSizeEl = document.createElement('span');
+        metaSizeEl.textContent = `${fileData.width}×${fileData.height}`;
+
+        const metaTypeEl = document.createElement('span');
+        metaTypeEl.textContent = fileData.isApng ? fileData.apngData.frames.length + ' F' : state.mode === 'psd' ? 'Layer' : 'Static';
+
+        metaEl.appendChild(metaSizeEl);
+        metaEl.appendChild(metaTypeEl);
+
+        info.appendChild(nameEl);
+        info.appendChild(metaEl);
 
         tile.appendChild(thumb);
         tile.appendChild(info);
@@ -4931,7 +4946,10 @@
     function showAutoSaveToast(message) {
       const toast = document.getElementById('autoSaveToast');
       if (!toast) return;
-      toast.innerHTML = `<span>${message}</span>`;
+      toast.textContent = '';
+      const toastSpan = document.createElement('span');
+      toastSpan.textContent = message;
+      toast.appendChild(toastSpan);
       toast.classList.add('show');
       if (saveToastTimer) clearTimeout(saveToastTimer);
       saveToastTimer = setTimeout(() => {

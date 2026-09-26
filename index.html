@@ -1312,7 +1312,7 @@
     .btn-notice-floating {
       position: fixed;
       bottom: 24px;
-      right: 24px;
+      right: 325px;
       width: 44px;
       height: 44px;
       border-radius: 50%;
@@ -1470,6 +1470,54 @@
 
     .notice-content-pane.active {
       display: flex;
+    }
+
+    /* GGUNDY Like Button Style */
+    .btn-ggundy-like {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      background: var(--bg-card);
+      border: 2px solid #111111;
+      border-radius: 20px;
+      font-family: var(--font-family);
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--text-main);
+      cursor: pointer;
+      box-shadow: 2px 2px 0 rgba(17, 17, 17, 0.2);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      user-select: none;
+      outline: none;
+    }
+    .btn-ggundy-like .heart-icon {
+      color: #80a6c8;
+      transition: all 0.25s ease;
+      flex-shrink: 0;
+    }
+    .btn-ggundy-like:hover {
+      transform: translateY(-2px);
+      box-shadow: 3px 3px 0 rgba(17, 17, 17, 0.3);
+      background: rgba(128, 166, 200, 0.08);
+    }
+    .btn-ggundy-like:hover .heart-icon {
+      transform: scale(1.15);
+    }
+    .btn-ggundy-like:active {
+      transform: translateY(0);
+      box-shadow: 1px 1px 0 rgba(17, 17, 17, 0.2);
+    }
+
+    /* Liked / Activated State */
+    .btn-ggundy-like.liked .heart-icon {
+      animation: heartPulse 0.4s ease-out;
+    }
+
+    @keyframes heartPulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.35); }
+      100% { transform: scale(1); }
     }
   </style>
 </head>
@@ -2227,7 +2275,7 @@
 		    <p style="margin-top: 4px;"><strong>zip 압축해제 관련:</strong><br>Windows 기본 압축 해제 기능 사용 시 오류가 발생 할 수 있습니다.<br>정상적인 파일 확인을 위해 반디집, 알집 등의 압축 프로그램 사용을 권장합니다.
 </p>	  
             <p style="margin-top: 4px;"><strong>기능 건의 안내:</strong><br>코코포리아를 거치지 않고 자체적으로 맵을 생성/제작하는 기능은 코코포리아 공식 서비스의
-              정책 및 유료 영역을 침해할 수 있어 해당 건의를 받지 않습니다. 양해 부탁드립니다.<br>그 외 기능 제안 및 버그리포트는 언제든지!</p>
+              정책 및 유료 영역을 침해할 수 있어 해당 건의를 받지 않습니다. 양해 부탁드립니다. 그 외 기능 제안 및 버그리포트는 언제든지!</p>
             <p style="margin-top: 4px;"><strong>문의:</strong><br><a href="https://open.kakao.com/o/s36mrXAf">오픈카톡 링크</a>
             </p>
           </div>
@@ -2253,10 +2301,22 @@
 
           <!-- Tab 3: GGUNDY -->
           <div class="notice-content-pane" id="paneNoticeGgundy"
-            style="align-items: center; justify-content: center; padding: 6px 0;">
-            <img src="important.png" alt="GGUNDY Important"
-              style="max-width: 100%; height: auto; border: 2px solid #111111; box-shadow: 3px 3px 0 rgba(17,17,17,0.15);">
-            <p>멋진 개.
+            style="align-items: center; justify-content: space-between; padding: 6px 0; min-height: 100%;">
+            <div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
+              <img src="important.png" alt="GGUNDY Important"
+                style="max-width: 100%; height: auto; border: 2px solid #111111; box-shadow: 3px 3px 0 rgba(17,17,17,0.15);">
+              <p style="margin-top: 8px; font-weight: 600;">멋진 개.</p>
+            </div>
+
+            <!-- Bottom Right Like Button Container -->
+            <div style="align-self: flex-end; margin-top: 14px; display: flex; align-items: center;">
+              <button class="btn-ggundy-like" id="btnGgundyLike" title="좋아요 / 추천하기">
+                <svg class="heart-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                  <path d="M2 8.5C2 5.46243 4.46243 3 7.5 3C9.36016 3 11.0046 3.92345 12 5.33692C12.9954 3.92345 14.6398 3 16.5 3C19.5376 3 22 5.46243 22 8.5C22 16 11.9999 21.4852 11.9999 21.4852C11.9999 21.4852 2 16 2 8.5Z"></path>
+                </svg>
+                <span class="like-count" id="textGgundyLikeCount">0</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -6233,6 +6293,76 @@
       updateUIState();
       await restoreAutoSavedSession();
     });
+  </script>
+
+  <!-- Firebase Realtime Database Integration for GGUNDY Like Button -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getDatabase, ref, onValue, runTransaction } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyByZ_U_aP_fhtE0fL6_fHtGhPVeiWuhEvw",
+      authDomain: "ggundy-52e05.firebaseapp.com",
+      databaseURL: "https://ggundy-52e05-default-rtdb.firebaseio.com",
+      projectId: "ggundy-52e05",
+      storageBucket: "ggundy-52e05.firebasestorage.app",
+      messagingSenderId: "462951885040",
+      appId: "1:462951885040:web:2bb4bba222a82bc0d33a35",
+      measurementId: "G-B6TZE60CCE"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+    const likesRef = ref(db, 'post_likes');
+
+    const likeBtn = document.getElementById('btnGgundyLike');
+    const likeCountEl = document.getElementById('textGgundyLikeCount');
+
+    // 100단위 이상 'k' 소수점 표기 포맷터 (예: 100 -> 0.1k, 150 -> 0.15k, 1000 -> 1k)
+    function formatLikeCount(count) {
+      if (typeof count !== 'number' || isNaN(count)) return '0';
+      if (count >= 100) {
+        let formatted = (count / 1000).toFixed(2);
+        formatted = parseFloat(formatted).toString();
+        return formatted + 'k';
+      }
+      return count.toString();
+    }
+
+    // 1인 1회 추천 로컬스토리지 체크
+    if (localStorage.getItem('ggundy_liked')) {
+      if (likeBtn) likeBtn.classList.add('liked');
+    }
+
+    // Firebase DB 실시간 추천 수 수신
+    onValue(likesRef, (snapshot) => {
+      const val = snapshot.val();
+      const count = (val !== null && val !== undefined) ? val : 0;
+      if (likeCountEl) likeCountEl.textContent = formatLikeCount(count);
+    });
+
+    // 추천 버튼 클릭 이벤트 및 트랜잭션
+    if (likeBtn) {
+      likeBtn.addEventListener('click', async () => {
+        if (localStorage.getItem('ggundy_liked')) {
+          alert('이미 좋아해줬어요!');
+          return;
+        }
+
+        try {
+          const result = await runTransaction(likesRef, (currentLikes) => {
+            return (currentLikes || 0) + 1;
+          });
+
+          if (result.committed) {
+            localStorage.setItem('ggundy_liked', 'true');
+            likeBtn.classList.add('liked');
+          }
+        } catch (error) {
+          console.error('Firebase Realtime Database like transaction failed:', error);
+        }
+      });
+    }
   </script>
 </body>
 

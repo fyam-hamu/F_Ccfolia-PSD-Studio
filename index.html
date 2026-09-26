@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ccfolia & 이미지 색상 보정 스튜디오 (Color Recolor Studio)</title>
-  <meta name="description" content="코코포리아(Ccfolia) 백업 ZIP, 포토샵 PSD 및 일반 이미지/APNG 다중 색 color correction 및 룸 뷰어 단일 웹 애플리케이션">
+  <meta name="description"
+    content="코코포리아(Ccfolia) 백업 ZIP, 포토샵 PSD 및 일반 이미지/APNG 다중 색 color correction 및 룸 뷰어 단일 웹 애플리케이션">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
+    rel="stylesheet">
 
   <!-- External Libraries -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
@@ -76,13 +80,16 @@
       width: 6px;
       height: 6px;
     }
+
     ::-webkit-scrollbar-track {
       background: rgba(17, 17, 17, 0.05);
     }
+
     ::-webkit-scrollbar-thumb {
       background: rgba(17, 17, 17, 0.35);
       border-radius: 0;
     }
+
     ::-webkit-scrollbar-thumb:hover {
       background: rgba(17, 17, 17, 0.6);
     }
@@ -111,6 +118,7 @@
       color: var(--text-main);
       white-space: nowrap;
     }
+
     .brand-title svg {
       color: var(--text-main);
     }
@@ -132,7 +140,9 @@
       font-size: 0.85rem;
       color: var(--text-muted);
     }
-    .dropzone-header:hover, .dropzone-header.dragover {
+
+    .dropzone-header:hover,
+    .dropzone-header.dragover {
       border-color: var(--border-strong);
       border-style: solid;
       background: #111111;
@@ -159,6 +169,7 @@
       align-items: center;
       gap: 6px;
     }
+
     .btn-file-trigger:hover {
       background: #111111;
       color: #ffffff;
@@ -180,21 +191,25 @@
       transition: all 0.2s ease;
       white-space: nowrap;
     }
+
     .mode-badge.ccfolia {
       background: var(--badge-ccfolia-bg);
       border-color: var(--badge-ccfolia-border);
       color: #111111;
     }
+
     .mode-badge.image {
       background: var(--badge-image-bg);
       border-color: var(--badge-image-border);
       color: #111111;
     }
+
     .mode-badge.psd {
       background: var(--badge-psd-bg);
       border-color: var(--badge-psd-border);
       color: #111111;
     }
+
     .mode-badge .dot {
       width: 8px;
       height: 8px;
@@ -225,10 +240,12 @@
       box-shadow: 3px 3px 0 rgba(17, 17, 17, 0.25);
       transition: all 0.15s ease;
     }
+
     .btn-primary:hover:not(:disabled) {
       transform: translate(-1px, -1px);
       box-shadow: 4px 4px 0 rgba(17, 17, 17, 0.35);
     }
+
     .btn-primary:disabled {
       opacity: 0.4;
       cursor: not-allowed;
@@ -251,6 +268,7 @@
       align-items: center;
       gap: 6px;
     }
+
     .btn-secondary:hover {
       background: #111111;
       color: #ffffff;
@@ -274,10 +292,12 @@
       overflow-y: auto;
       z-index: 10;
     }
+
     aside.panel-left {
       width: var(--panel-width-left);
       border-right: 2px solid var(--border-strong);
     }
+
     aside.panel-right {
       width: var(--panel-width-right);
       border-left: 2px solid var(--border-strong);
@@ -296,6 +316,7 @@
       justify-content: space-between;
       background: var(--bg-card);
     }
+
     .panel-header .title {
       display: flex;
       align-items: center;
@@ -320,6 +341,7 @@
       flex-direction: column;
       gap: 12px;
     }
+
     .control-group-title {
       font-size: 0.75rem;
       font-weight: 700;
@@ -339,6 +361,7 @@
       flex-direction: column;
       gap: 6px;
     }
+
     .slider-label {
       display: flex;
       align-items: center;
@@ -346,6 +369,7 @@
       font-size: 0.8rem;
       color: var(--text-muted);
     }
+
     input[type="range"] {
       -webkit-appearance: none;
       appearance: none;
@@ -355,6 +379,7 @@
       border-radius: 0;
       outline: none;
     }
+
     input[type="range"]::-webkit-slider-thumb {
       -webkit-appearance: none;
       appearance: none;
@@ -367,6 +392,7 @@
       box-shadow: none;
       transition: transform 0.1s ease;
     }
+
     input[type="range"]::-webkit-slider-thumb:hover {
       transform: scale(1.15);
     }
@@ -386,6 +412,7 @@
       padding: 0 4px;
       outline: none;
     }
+
     input[type="number"].num-input:focus {
       border-color: var(--border-strong);
       box-shadow: 0 0 0 1px #111111;
@@ -397,6 +424,7 @@
       flex-direction: column;
       gap: 10px;
     }
+
     .ps-gradient-ramp-container {
       position: relative;
       width: 100%;
@@ -406,16 +434,19 @@
       border-radius: 0;
       cursor: pointer;
     }
+
     .ps-gradient-ramp {
       width: 100%;
       height: 100%;
       border-radius: 5px;
     }
+
     .ps-stops-bar {
       position: relative;
       width: 100%;
       height: 24px;
     }
+
     .ps-stop-handle {
       position: absolute;
       top: 2px;
@@ -429,11 +460,13 @@
       box-shadow: none;
       transition: transform 0.1s ease;
     }
+
     .ps-stop-handle.active {
       border-color: #111111;
       box-shadow: 0 0 0 2px #111111;
       z-index: 10;
     }
+
     .ps-stop-handle .color-preview {
       width: 100%;
       height: 60%;
@@ -446,7 +479,9 @@
       flex-wrap: wrap;
     }
 
-    select, input[type="text"], input[type="number"] {
+    select,
+    input[type="text"],
+    input[type="number"] {
       width: 100%;
       background: var(--bg-input);
       border: 1.5px solid var(--border-strong);
@@ -457,7 +492,10 @@
       font-family: inherit;
       outline: none;
     }
-    select:focus, input[type="text"]:focus, input[type="number"]:focus {
+
+    select:focus,
+    input[type="text"]:focus,
+    input[type="number"]:focus {
       border-color: var(--border-focus);
       box-shadow: 0 0 0 1px #111111;
     }
@@ -472,17 +510,20 @@
       border-radius: 0;
       overflow: hidden;
     }
+
     canvas#curveCanvas {
       width: 100%;
       height: 100%;
       cursor: crosshair;
       display: block;
     }
+
     .curve-presets {
       display: flex;
       gap: 4px;
       flex-wrap: wrap;
     }
+
     .btn-xs {
       background: var(--bg-card);
       border: 1px solid var(--border-strong);
@@ -494,6 +535,7 @@
       cursor: pointer;
       transition: all 0.15s ease;
     }
+
     .btn-xs:hover {
       background: #111111;
       color: #ffffff;
@@ -510,10 +552,12 @@
       font-size: 0.72rem;
       transition: all 0.15s ease;
     }
+
     .custom-preset-pill:hover {
       border-color: #111111;
       box-shadow: 2px 2px 0 rgba(17, 17, 17, 0.15);
     }
+
     .custom-preset-pill .preset-apply-btn {
       border: none;
       background: transparent;
@@ -526,10 +570,12 @@
       align-items: center;
       gap: 4px;
     }
+
     .custom-preset-pill .preset-apply-btn:hover {
       background: #111111;
       color: #ffffff;
     }
+
     .custom-preset-pill .btn-xs-del {
       border: none;
       border-left: 1px solid var(--border-strong);
@@ -541,6 +587,7 @@
       font-size: 0.7rem;
       transition: all 0.12s ease;
     }
+
     .custom-preset-pill .btn-xs-del:hover {
       background: var(--accent-danger);
       color: #ffffff;
@@ -566,10 +613,12 @@
       justify-content: space-between;
       padding: 0 16px;
     }
+
     .tabs-group {
       display: flex;
       gap: 4px;
     }
+
     .tab-btn {
       padding: 8px 16px;
       font-size: 0.8rem;
@@ -586,14 +635,17 @@
       align-items: center;
       gap: 8px;
     }
+
     .tab-btn:hover:not(.disabled) {
       color: var(--text-main);
     }
+
     .tab-btn.active {
       color: var(--text-main);
       border-bottom-color: #111111;
       font-weight: 700;
     }
+
     .tab-btn.disabled {
       opacity: 0.4;
       cursor: not-allowed;
@@ -611,6 +663,7 @@
       overflow: hidden;
       display: none;
     }
+
     .view-container.active {
       display: flex;
       flex-direction: column;
@@ -626,9 +679,11 @@
       gap: 12px;
       font-size: 0.8rem;
     }
+
     .grid-view-toolbar input[type="text"] {
       max-width: 200px;
     }
+
     .grid-tiles-wrapper {
       flex: 1;
       padding: 20px;
@@ -650,15 +705,18 @@
       transition: all 0.15s ease;
       position: relative;
     }
+
     .grid-tile:hover {
       border-color: #111111;
       transform: translate(-2px, -2px);
       box-shadow: 4px 4px 0 rgba(17, 17, 17, 0.2);
     }
+
     .grid-tile.selected {
       border-color: #111111;
       box-shadow: 0 0 0 2px #111111;
     }
+
     .grid-tile-thumb {
       height: 140px;
       background: #ffffff;
@@ -672,11 +730,14 @@
       overflow: hidden;
       border-bottom: 1.5px solid var(--border-strong);
     }
-    .grid-tile-thumb canvas, .grid-tile-thumb img {
+
+    .grid-tile-thumb canvas,
+    .grid-tile-thumb img {
       max-width: 100%;
       max-height: 100%;
       object-fit: contain;
     }
+
     .grid-tile-info {
       padding: 8px 10px;
       display: flex;
@@ -684,6 +745,7 @@
       gap: 2px;
       background: var(--bg-panel);
     }
+
     .grid-tile-name {
       font-size: 0.78rem;
       font-weight: 600;
@@ -692,6 +754,7 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
+
     .grid-tile-meta {
       font-size: 0.7rem;
       color: var(--text-dim);
@@ -711,6 +774,7 @@
       padding: 2px 6px;
       border-radius: 0;
     }
+
     .tile-badge-psd {
       position: absolute;
       top: 6px;
@@ -723,6 +787,7 @@
       padding: 2px 6px;
       border-radius: 0;
     }
+
     .tile-badge-modified {
       position: absolute;
       top: 6px;
@@ -748,15 +813,18 @@
       font-size: 0.8rem;
       z-index: 20;
     }
+
     .room-canvas-wrapper {
       flex: 1;
       position: relative;
       cursor: grab;
       overflow: hidden;
     }
+
     .room-canvas-wrapper:active {
       cursor: grabbing;
     }
+
     canvas#roomCanvas {
       width: 100%;
       height: 100%;
@@ -780,6 +848,7 @@
       overflow: hidden;
       transition: all 0.2s ease;
     }
+
     .psd-layer-panel-header {
       padding: 10px 12px;
       background: #111111;
@@ -793,6 +862,7 @@
       letter-spacing: 0.3px;
       color: #ffffff;
     }
+
     .psd-layer-list {
       display: flex;
       flex-direction: column;
@@ -801,6 +871,7 @@
       overflow-y: auto;
       padding: 8px;
     }
+
     .psd-layer-item {
       display: flex;
       align-items: center;
@@ -813,18 +884,22 @@
       transition: all 0.15s ease;
       user-select: none;
     }
+
     .psd-layer-item:hover {
       background: rgba(17, 17, 17, 0.06);
       border-color: rgba(17, 17, 17, 0.3);
     }
+
     .psd-layer-item.selected {
       background: rgba(17, 17, 17, 0.1);
       border-color: #111111;
       box-shadow: 0 0 0 1px #111111;
     }
+
     .psd-layer-item.hidden-layer {
       opacity: 0.45;
     }
+
     .btn-vis-eye {
       width: 22px;
       height: 22px;
@@ -841,13 +916,16 @@
       padding: 0;
       outline: none;
     }
+
     .btn-vis-eye.off {
       color: #a09f97;
       opacity: 0.45;
     }
+
     .btn-vis-eye:hover {
       transform: scale(1.18);
     }
+
     .btn-vis-circle {
       width: 14px;
       height: 14px;
@@ -861,11 +939,13 @@
       padding: 0;
       outline: none;
     }
+
     .btn-vis-circle.off {
       background: #cfcec7;
       box-shadow: none;
       border-color: rgba(17, 17, 17, 0.15);
     }
+
     .btn-vis-circle:hover {
       transform: scale(1.2);
     }
@@ -889,16 +969,19 @@
       outline: none;
       padding: 0;
     }
+
     .btn-solo-square:hover {
       background: rgba(17, 17, 17, 0.1);
       color: var(--text-main);
     }
+
     .btn-solo-square.active {
       background: #111111;
       border-color: #111111;
       color: #ffffff;
       box-shadow: none;
     }
+
     .psd-layer-thumb {
       width: 28px;
       height: 28px;
@@ -913,11 +996,13 @@
       flex-shrink: 0;
       border: 1px solid rgba(17, 17, 17, 0.2);
     }
+
     .psd-layer-thumb canvas {
       max-width: 100%;
       max-height: 100%;
       object-fit: contain;
     }
+
     .psd-layer-name {
       font-size: 0.78rem;
       font-weight: 500;
@@ -927,11 +1012,13 @@
       text-overflow: ellipsis;
       flex: 1;
     }
+
     .psd-layer-meta {
       font-size: 0.68rem;
       color: var(--text-dim);
       flex-shrink: 0;
     }
+
     .tile-badge-hidden {
       position: absolute;
       bottom: 6px;
@@ -947,13 +1034,17 @@
     /* Single Image Inspector Overlay / Modal */
     .single-inspector-overlay {
       position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
       background: rgba(10, 10, 10, 0.96);
       z-index: 90;
       display: none;
       flex-direction: column;
       overflow: hidden;
     }
+
     .single-inspector-overlay.show {
       display: flex;
     }
@@ -967,6 +1058,7 @@
       justify-content: space-between;
       padding: 0 20px;
     }
+
     .inspector-title {
       font-size: 0.9rem;
       font-weight: 700;
@@ -981,6 +1073,7 @@
       display: flex;
       overflow: hidden;
     }
+
     .inspector-main-preview {
       flex: 1;
       background: #000;
@@ -993,11 +1086,12 @@
       overflow: hidden;
       padding: 20px;
     }
+
     .inspector-main-preview canvas {
       max-width: 95%;
       max-height: 95%;
       object-fit: contain;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
       border-radius: 4px;
     }
 
@@ -1019,20 +1113,26 @@
       width: 36px;
       height: 20px;
     }
+
     .switch input {
       opacity: 0;
       width: 0;
       height: 0;
     }
+
     .slider-toggle {
       position: absolute;
       cursor: pointer;
-      top: 0; left: 0; right: 0; bottom: 0;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
       background-color: #ffffff;
       border: 1.5px solid #111111;
       transition: .2s;
       border-radius: 20px;
     }
+
     .slider-toggle:before {
       position: absolute;
       content: "";
@@ -1044,10 +1144,12 @@
       transition: .2s;
       border-radius: 50%;
     }
-    input:checked + .slider-toggle {
+
+    input:checked+.slider-toggle {
       background-color: #111111;
     }
-    input:checked + .slider-toggle:before {
+
+    input:checked+.slider-toggle:before {
       transform: translateX(16px);
       background-color: #ffffff;
     }
@@ -1064,6 +1166,7 @@
       padding: 40px;
       text-align: center;
     }
+
     .empty-state svg {
       opacity: 0.3;
     }
@@ -1071,7 +1174,10 @@
     /* Modal / Progress Overlay */
     .modal-overlay {
       position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
       background: rgba(17, 17, 17, 0.55);
       display: flex;
       align-items: center;
@@ -1081,10 +1187,12 @@
       pointer-events: none;
       transition: opacity 0.2s ease;
     }
+
     .modal-overlay.show {
       opacity: 1;
       pointer-events: auto;
     }
+
     .modal-box {
       background: var(--bg-card);
       border: 2px solid #111111;
@@ -1098,6 +1206,7 @@
       box-shadow: 6px 6px 0 rgba(17, 17, 17, 0.2);
       text-align: center;
     }
+
     .progress-bar-bg {
       width: 100%;
       height: 8px;
@@ -1106,6 +1215,7 @@
       border-radius: 0;
       overflow: hidden;
     }
+
     .progress-bar-fill {
       height: 100%;
       width: 0%;
@@ -1136,6 +1246,7 @@
       pointer-events: none;
       transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
+
     .autosave-toast.show {
       opacity: 1;
       transform: translateY(0);
@@ -1156,10 +1267,12 @@
       transition: all 0.12s ease;
       user-select: none;
     }
+
     .ccfolia-compress-group:hover {
       border-color: var(--border-strong);
       color: var(--text-main);
     }
+
     .ccfolia-compress-group input[type="checkbox"] {
       width: auto;
       border: none;
@@ -1168,6 +1281,7 @@
       accent-color: #111111;
       flex-shrink: 0;
     }
+
     .ccfolia-compress-group select {
       width: auto;
       padding: 2px 4px;
@@ -1177,6 +1291,7 @@
       background: var(--bg-input);
       color: var(--text-main);
     }
+
     .compress-status-text {
       font-size: 0.72rem;
       color: var(--accent-warning);
@@ -1188,17 +1303,184 @@
       text-overflow: ellipsis;
       display: none;
     }
+
     .compress-status-text.show {
       display: block;
     }
+
+    /* Floating Notice (FAQ/Help) Circle Button */
+    .btn-notice-floating {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--bg-card);
+      border: 2.5px solid #111111;
+      color: #111111;
+      font-family: var(--font-family);
+      font-weight: 800;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 3px 3px 0 rgba(17, 17, 17, 0.25);
+      z-index: 150;
+      transition: all 0.15s ease;
+      outline: none;
+    }
+
+    .btn-notice-floating:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: 4px 4px 0 rgba(17, 17, 17, 0.35);
+      background: #111111;
+      color: #ffffff;
+    }
+
+    /* Notice Modal Window */
+    .notice-modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(17, 17, 17, 0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 160;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+    }
+
+    .notice-modal-overlay.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .notice-modal-box {
+      width: 600px;
+      height: 660px;
+      max-width: 92vw;
+      max-height: 92vh;
+      background: var(--bg-panel);
+      border: 3px solid #111111;
+      border-radius: 0;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 6px 6px 0 rgba(17, 17, 17, 0.3);
+      overflow: hidden;
+    }
+
+    .notice-header {
+      padding: 14px 20px;
+      background: var(--bg-dark);
+      border-bottom: 2px solid #111111;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .notice-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      letter-spacing: 3.5px;
+      font-family: var(--font-family);
+    }
+
+    .notice-close-btn {
+      background: transparent;
+      border: none;
+      font-size: 1.2rem;
+      font-weight: 900;
+      color: var(--text-main);
+      cursor: pointer;
+      line-height: 1;
+      padding: 2px 6px;
+      font-family: var(--font-family);
+      transition: transform 0.12s ease;
+    }
+
+    .notice-close-btn:hover {
+      transform: scale(1.18);
+      color: var(--accent-danger);
+    }
+
+    .notice-body {
+      flex: 1;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      overflow: hidden;
+      background: var(--bg-card);
+    }
+
+    /* Notice Sub-menu Rectangular Tab Buttons */
+    .notice-tabs-row {
+      display: flex;
+      gap: 8px;
+    }
+
+    .notice-tab-btn {
+      padding: 6px 14px;
+      background: var(--bg-card);
+      border: 2px solid #111111;
+      border-radius: 0;
+      font-size: 0.82rem;
+      font-weight: 700;
+      font-family: 'Noto Sans KR', var(--font-family);
+      color: var(--text-main);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .notice-tab-btn.active {
+      background: #111111;
+      color: #ffffff;
+    }
+
+    .notice-tab-btn:hover:not(.active) {
+      background: rgba(17, 17, 17, 0.08);
+    }
+
+    /* Notice Content Scroll Area */
+    .notice-content-area {
+      flex: 1;
+      overflow-y: auto;
+      padding-right: 6px;
+      font-family: 'Noto Sans KR', var(--font-family);
+      font-size: 0.83rem;
+      line-height: 1.7;
+      color: var(--text-main);
+    }
+
+    .notice-content-pane {
+      display: none;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .notice-content-pane.active {
+      display: flex;
+    }
   </style>
 </head>
+
 <body>
 
   <!-- Top Bar Header -->
   <header class="top-bar">
     <div class="brand-title">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+        stroke-linecap="round" stroke-linejoin="round">
         <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
         <polyline points="2 17 12 22 22 17"></polyline>
         <polyline points="2 12 12 17 22 12"></polyline>
@@ -1239,7 +1521,8 @@
 
       <!-- APNG / 코코포리아 용량 압축 옵션 패널 -->
       <div class="ccfolia-compress-group">
-        <label title="APNG 및 용량 초과 이미지를 지정한 용량 이하로 자동 압축합니다 (단계별 해상도/색상 축소)" style="display: flex; align-items: center; gap: 4px; cursor: pointer;">
+        <label title="APNG 및 용량 초과 이미지를 지정한 용량 이하로 자동 압축합니다 (단계별 해상도/색상 축소)"
+          style="display: flex; align-items: center; gap: 4px; cursor: pointer;">
           <input type="checkbox" id="chkCcfoliaCompress" checked>
           <span>APNG/이미지 압축</span>
         </label>
@@ -1248,15 +1531,18 @@
           <option value="2.0">2.0MB (소용량)</option>
           <option value="10.0">10.0MB (고화질)</option>
         </select>
-        <label title="고용량 APNG의 경우 해상도를 유지하기 위해 프레임 레이트 감축(Frame Skip) 허용" style="display: flex; align-items: center; gap: 3px; cursor: pointer;">
+        <label title="고용량 APNG의 경우 해상도를 유지하기 위해 프레임 레이트 감축(Frame Skip) 허용"
+          style="display: flex; align-items: center; gap: 3px; cursor: pointer;">
           <input type="checkbox" id="chkApngFrameSkip" checked>
           <span>프레임 킵</span>
         </label>
-        <label title="4.8MB 초과 대용량 정적 PNG도 지정 용량 이하로 압축" style="display: flex; align-items: center; gap: 3px; cursor: pointer;">
+        <label title="4.8MB 초과 대용량 정적 PNG도 지정 용량 이하로 압축"
+          style="display: flex; align-items: center; gap: 3px; cursor: pointer;">
           <input type="checkbox" id="chkCompressStaticPng">
           <span>정적 PNG 포함</span>
         </label>
-        <div style="display: flex; align-items: center; gap: 4px; border-left: 1px solid var(--border-color); padding-left: 8px; margin-left: 4px;">
+        <div
+          style="display: flex; align-items: center; gap: 4px; border-left: 1px solid var(--border-color); padding-left: 8px; margin-left: 4px;">
           <span title="APNG 루프 재생 설정 (기본: 원본 유지)">APNG 루프:</span>
           <select id="selectGlobalApngLoop" title="APNG 저장 시 루프/반복 재생 설정">
             <option value="keep" selected>원본 유지</option>
@@ -1264,7 +1550,8 @@
             <option value="infinite">무한 반복</option>
             <option value="custom">횟수 지정</option>
           </select>
-          <input type="number" id="numGlobalApngLoopCount" min="1" max="999" value="1" style="display: none; width: 44px; padding: 1px 4px; font-size: 0.72rem;" title="반복 횟수 입력">
+          <input type="number" id="numGlobalApngLoopCount" min="1" max="999" value="1"
+            style="display: none; width: 44px; padding: 1px 4px; font-size: 0.72rem;" title="반복 횟수 입력">
         </div>
       </div>
 
@@ -1306,12 +1593,15 @@
             <span>커스텀 색상 프리셋</span>
           </div>
           <div style="display: flex; gap: 6px;">
-            <input type="text" id="inputCustomPresetName" placeholder="프리셋 이름 (예: 빈티지 톤)" style="flex: 1; font-size: 0.78rem;">
-            <button class="btn-primary" id="btnSaveCustomPreset" style="padding: 4px 10px; font-size: 0.75rem; white-space: nowrap;">
+            <input type="text" id="inputCustomPresetName" placeholder="프리셋 이름 (예: 빈티지 톤)"
+              style="flex: 1; font-size: 0.78rem;">
+            <button class="btn-primary" id="btnSaveCustomPreset"
+              style="padding: 4px 10px; font-size: 0.75rem; white-space: nowrap;">
               저장
             </button>
           </div>
-          <div id="customPresetsList" style="display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; max-height: 110px; overflow-y: auto;">
+          <div id="customPresetsList"
+            style="display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; max-height: 110px; overflow-y: auto;">
             <!-- Dynamically populated custom preset buttons -->
           </div>
         </div>
@@ -1319,7 +1609,7 @@
         <!-- Basic Tone Controls with Direct Number Input -->
         <div class="control-group">
           <div class="control-group-title">기본 톤 조절</div>
-          
+
           <div class="slider-row">
             <div class="slider-label">
               <span>색조 Shift (Hue)</span>
@@ -1384,12 +1674,14 @@
             <div class="ps-stops-bar" id="psStopsBar"></div>
 
             <!-- Stop Active Controls -->
-            <div style="display: flex; gap: 8px; align-items: center; justify-content: space-between; font-size: 0.78rem;">
+            <div
+              style="display: flex; gap: 8px; align-items: center; justify-content: space-between; font-size: 0.78rem;">
               <div style="display: flex; gap: 6px; align-items: center;">
                 <span>색상:</span>
                 <input type="color" id="psStopColorPicker" value="#000000" style="width: 36px; height: 26px;">
                 <span>위치:</span>
-                <input type="number" id="psStopPosInput" min="0" max="100" value="0" style="width: 52px; padding: 2px 4px;">%
+                <input type="number" id="psStopPosInput" min="0" max="100" value="0"
+                  style="width: 52px; padding: 2px 4px;">%
               </div>
               <button class="btn-xs" id="psBtnDeleteStop" style="color: var(--accent-danger);">삭제</button>
             </div>
@@ -1478,7 +1770,8 @@
             <option value="size">크기순</option>
             <option value="type">유형순</option>
           </select>
-          <button class="btn-primary" id="btnFitMarginBatch" style="margin-left: auto; padding: 5px 12px; font-size: 0.75rem;" title="코코포리아 그리드 크기는 24픽셀 입니다.
+          <button class="btn-primary" id="btnFitMarginBatch"
+            style="margin-left: auto; padding: 5px 12px; font-size: 0.75rem;" title="코코포리아 그리드 크기는 24픽셀 입니다.
 크기가 맞아 떨어지게 , 24배수에 맞춰서 여백을 늘립니다.">
             전체 맞춤여백 (24px)
           </button>
@@ -1524,7 +1817,9 @@
       <!-- Empty State Overlay (When no files loaded) -->
       <div class="empty-state" id="emptyState">
         <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <path d="M4 16l4.586-4.586a2 2 0 0 1 2.828 0L16 16m-2-2l1.586-1.586a2 2 0 0 1 2.828 0L20 14m-6-6h.01M6 20h12a2 2 0 0 1 2-2V6a2 2 0 0 1-2-2H6a2 2 0 0 1-2 2v12a2 2 0 0 1 2 2z"></path>
+          <path
+            d="M4 16l4.586-4.586a2 2 0 0 1 2.828 0L16 16m-2-2l1.586-1.586a2 2 0 0 1 2.828 0L20 14m-6-6h.01M6 20h12a2 2 0 0 1 2-2V6a2 2 0 0 1-2-2H6a2 2 0 0 1-2 2v12a2 2 0 0 1 2 2z">
+          </path>
         </svg>
         <h3>불러온 파일이 없습니다</h3>
         <p>상단 드롭존에 코코포리아 ZIP 파일, 포토샵 PSD 또는 이미지/폴더를 드래그하거나 선택하세요.</p>
@@ -1548,7 +1843,8 @@
       <div class="panel-content" id="assetDetailPanelContent">
 
         <!-- PSD Layer Panel Section in Right Sidebar -->
-        <div class="psd-layer-stack-panel" id="psdRightLayerPanelWrapper" style="display: none; flex-direction: column; gap: 8px; margin-bottom: 16px;">
+        <div class="psd-layer-stack-panel" id="psdRightLayerPanelWrapper"
+          style="display: none; flex-direction: column; gap: 8px; margin-bottom: 16px;">
           <div class="psd-layer-panel-header" style="border-radius: 6px;">
             <span>PSD 레이어 목록</span>
             <div style="display: flex; gap: 4px;">
@@ -1562,13 +1858,15 @@
           </div>
         </div>
 
-        <div style="font-size: 0.8rem; color: var(--text-dim); text-align: center; padding: 20px 0;" id="assetNoSelectText">
+        <div style="font-size: 0.8rem; color: var(--text-dim); text-align: center; padding: 20px 0;"
+          id="assetNoSelectText">
           선택된 에셋이 없습니다.<br>그리드나 배치 뷰에서 이미지를 클릭하면 전용 뷰어가 열립니다.
         </div>
 
         <div id="assetSelectedControls" style="display: none; flex-direction: column; gap: 16px;">
           <!-- Preview Box -->
-          <div class="selected-asset-preview" style="cursor: pointer;" title="클릭하여 단일 전용 뷰어 열기" id="sidePreviewClickArea">
+          <div class="selected-asset-preview" style="cursor: pointer;" title="클릭하여 단일 전용 뷰어 열기"
+            id="sidePreviewClickArea">
             <canvas id="assetPreviewCanvas"></canvas>
           </div>
 
@@ -1586,23 +1884,28 @@
               <div style="flex: 1; display: flex; flex-direction: column; gap: 2px;">
                 <span style="font-size: 0.72rem; color: var(--text-muted);">가로(W)</span>
                 <div style="display: flex; align-items: center; gap: 2px;">
-                  <input type="number" id="numCanvasWidth" min="1" class="num-input" style="width: 100%; text-align: center;">
+                  <input type="number" id="numCanvasWidth" min="1" class="num-input"
+                    style="width: 100%; text-align: center;">
                   <span style="font-size: 0.72rem;">px</span>
                 </div>
               </div>
               <div style="flex: 1; display: flex; flex-direction: column; gap: 2px;">
                 <span style="font-size: 0.72rem; color: var(--text-muted);">세로(H)</span>
                 <div style="display: flex; align-items: center; gap: 2px;">
-                  <input type="number" id="numCanvasHeight" min="1" class="num-input" style="width: 100%; text-align: center;">
+                  <input type="number" id="numCanvasHeight" min="1" class="num-input"
+                    style="width: 100%; text-align: center;">
                   <span style="font-size: 0.72rem;">px</span>
                 </div>
               </div>
             </div>
             <div style="display: flex; gap: 6px; margin-top: 8px;">
-              <button class="btn-secondary" id="btnApplyCanvasSize" style="flex: 1; justify-content: center; font-size: 0.72rem; padding: 5px 0;">
+              <button class="btn-secondary" id="btnApplyCanvasSize"
+                style="flex: 1; justify-content: center; font-size: 0.72rem; padding: 5px 0;">
                 크기 변경
               </button>
-              <button class="btn-primary" id="btnFitMargin" style="flex: 1; justify-content: center; font-size: 0.72rem; padding: 5px 0;" title="코코포리아 그리드 크기는 24픽셀 입니다. 크기가 맞아 떨어지게 , 24배수에 맞춰서 여백을 늘립니다.">
+              <button class="btn-primary" id="btnFitMargin"
+                style="flex: 1; justify-content: center; font-size: 0.72rem; padding: 5px 0;"
+                title="코코포리아 그리드 크기는 24픽셀 입니다. 크기가 맞아 떨어지게 , 24배수에 맞춰서 여백을 늘립니다.">
                 맞춤여백
               </button>
             </div>
@@ -1623,7 +1926,8 @@
       <div class="inspector-title">
         <button class="btn-secondary" id="btnInspectorBack">← 목록으로 돌아가기</button>
         <span id="inspectorFileName" style="margin-left: 10px;">filename.png</span>
-        <span id="inspectorMetaBadge" style="font-size: 0.75rem; color: var(--text-dim); font-weight: 400;">1024x768</span>
+        <span id="inspectorMetaBadge"
+          style="font-size: 0.75rem; color: var(--text-dim); font-weight: 400;">1024x768</span>
       </div>
 
       <div style="display: flex; gap: 10px; align-items: center;">
@@ -1641,13 +1945,17 @@
         <canvas id="inspectorCanvas"></canvas>
 
         <!-- APNG Frame Animation Player Controls Overlay -->
-        <div class="apng-player-controls" id="apngPlayerControls" style="display: none; position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%); background: rgba(17, 17, 17, 0.92); border: 1.5px solid #ffffff; padding: 6px 14px; gap: 8px; align-items: center; border-radius: 0; z-index: 20; color: #ffffff; font-size: 0.78rem; box-shadow: 0 4px 12px rgba(0,0,0,0.5);">
+        <div class="apng-player-controls" id="apngPlayerControls"
+          style="display: none; position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%); background: rgba(17, 17, 17, 0.92); border: 1.5px solid #ffffff; padding: 6px 14px; gap: 8px; align-items: center; border-radius: 0; z-index: 20; color: #ffffff; font-size: 0.78rem; box-shadow: 0 4px 12px rgba(0,0,0,0.5);">
           <button class="btn-xs" id="btnApngPlayPause" style="padding: 3px 8px; font-weight: 700;">⏸️ 정지</button>
           <button class="btn-xs" id="btnApngPrevFrame" style="padding: 3px 6px;">◀</button>
-          <span id="textApngFrameNum" style="font-family: var(--font-family); font-weight: 600; min-width: 75px; text-align: center;">1 / 1 F</span>
+          <span id="textApngFrameNum"
+            style="font-family: var(--font-family); font-weight: 600; min-width: 75px; text-align: center;">1 / 1
+            F</span>
           <button class="btn-xs" id="btnApngNextFrame" style="padding: 3px 6px;">▶</button>
           <input type="range" id="sliderApngFrame" min="0" max="0" value="0" style="width: 110px; margin: 0 4px;">
-          <select id="selectApngSpeed" style="width: auto; padding: 2px 4px; font-size: 0.72rem; background: #000; color: #fff; border: 1px solid #fff;">
+          <select id="selectApngSpeed"
+            style="width: auto; padding: 2px 4px; font-size: 0.72rem; background: #000; color: #fff; border: 1px solid #fff;">
             <option value="0.5">0.5x</option>
             <option value="1.0" selected>1.0x</option>
             <option value="1.5">1.5x</option>
@@ -1712,7 +2020,8 @@
         <div class="control-group" style="padding: 10px;">
           <div class="control-group-title">
             <span>그라데이션 맵</span>
-            <label style="font-size: 0.75rem; font-weight: normal; cursor: pointer; display: flex; align-items: center; gap: 4px;">
+            <label
+              style="font-size: 0.75rem; font-weight: normal; cursor: pointer; display: flex; align-items: center; gap: 4px;">
               <input type="checkbox" id="chkAssetGrad"> 적용
             </label>
           </div>
@@ -1723,12 +2032,14 @@
             </div>
             <div class="ps-stops-bar" id="assetPsStopsBar"></div>
 
-            <div style="display: flex; gap: 8px; align-items: center; justify-content: space-between; font-size: 0.78rem;">
+            <div
+              style="display: flex; gap: 8px; align-items: center; justify-content: space-between; font-size: 0.78rem;">
               <div style="display: flex; gap: 6px; align-items: center;">
                 <span>색상:</span>
                 <input type="color" id="assetPsStopColorPicker" value="#000000" style="width: 36px; height: 26px;">
                 <span>위치:</span>
-                <input type="number" id="assetPsStopPosInput" min="0" max="100" value="0" style="width: 52px; padding: 2px 4px;">%
+                <input type="number" id="assetPsStopPosInput" min="0" max="100" value="0"
+                  style="width: 52px; padding: 2px 4px;">%
               </div>
               <button class="btn-xs" id="assetPsBtnDeleteStop" style="color: var(--accent-danger);">삭제</button>
             </div>
@@ -1784,22 +2095,27 @@
           </div>
         </div>
 
-        <button class="btn-xs" id="btnResetAssetSingle" style="align-self: flex-start; margin-top: 6px;">개별 보정 초기화</button>
+        <button class="btn-xs" id="btnResetAssetSingle" style="align-self: flex-start; margin-top: 6px;">개별 보정
+          초기화</button>
 
         <!-- APNG Compression Test Studio Section -->
-        <div id="inspectorApngStudioSection" style="display: none; border-top: 1px dashed rgba(17, 17, 17, 0.25); padding-top: 12px; margin-top: 10px; flex-direction: column; gap: 8px;">
+        <div id="inspectorApngStudioSection"
+          style="display: none; border-top: 1px dashed rgba(17, 17, 17, 0.25); padding-top: 12px; margin-top: 10px; flex-direction: column; gap: 8px;">
           <div style="font-size: 0.85rem; font-weight: 700; color: var(--accent-secondary);">⚡ APNG 압축 스튜디오</div>
-          <button class="btn-primary" id="btnTestApngCompress" style="justify-content: center; font-size: 0.75rem; padding: 6px 10px;">
+          <button class="btn-primary" id="btnTestApngCompress"
+            style="justify-content: center; font-size: 0.75rem; padding: 6px 10px;">
             ⚡ 실시간 압축 테스트 & 예상 용량
           </button>
-          <div id="apngTestResultCard" style="display: none; background: var(--bg-card); border: 1.5px solid var(--border-strong); padding: 10px; font-size: 0.75rem; flex-direction: column; gap: 4px;">
+          <div id="apngTestResultCard"
+            style="display: none; background: var(--bg-card); border: 1.5px solid var(--border-strong); padding: 10px; font-size: 0.75rem; flex-direction: column; gap: 4px;">
             <div style="display: flex; justify-content: space-between; font-weight: 700;">
               <span>압축 후 예상 용량:</span>
               <span id="apngTestResultSize" style="color: var(--accent-success);">-- MB</span>
             </div>
             <div style="font-size: 0.7rem; color: var(--text-muted); display: flex; justify-content: space-between;">
               <span>원본: <span id="apngTestOrigSize">-- MB</span></span>
-              <span>절감률: <span id="apngTestRatio" style="font-weight: 700; color: var(--accent-primary);">--%</span></span>
+              <span>절감률: <span id="apngTestRatio"
+                  style="font-weight: 700; color: var(--accent-primary);">--%</span></span>
             </div>
             <div style="font-size: 0.72rem; color: var(--text-dim); margin-top: 2px;" id="apngTestDetails">
               해상도 100% | 256색
@@ -1808,7 +2124,8 @@
         </div>
 
         <!-- APNG Loop Control Section -->
-        <div id="inspectorApngLoopSection" style="display: none; border-top: 1px dashed rgba(17, 17, 17, 0.25); padding-top: 10px; margin-top: 10px; flex-direction: column; gap: 6px;">
+        <div id="inspectorApngLoopSection"
+          style="display: none; border-top: 1px dashed rgba(17, 17, 17, 0.25); padding-top: 10px; margin-top: 10px; flex-direction: column; gap: 6px;">
           <div style="display: flex; justify-content: space-between; align-items: center;">
             <span style="font-size: 0.82rem; font-weight: 700; color: var(--accent-secondary);">🔁 APNG 루프 설정</span>
             <span id="textAssetOrigLoopInfo" style="font-size: 0.7rem; color: var(--text-dim);">원본: 1회 재생</span>
@@ -1821,33 +2138,40 @@
               <option value="infinite">무한 반복</option>
               <option value="custom">횟수 지정...</option>
             </select>
-            <input type="number" id="numAssetApngLoopCount" min="1" max="999" value="1" style="display: none; width: 48px; padding: 3px 4px; font-size: 0.75rem;">
+            <input type="number" id="numAssetApngLoopCount" min="1" max="999" value="1"
+              style="display: none; width: 48px; padding: 3px 4px; font-size: 0.75rem;">
           </div>
         </div>
 
         <div style="border-top: 1px dashed rgba(17, 17, 17, 0.25); padding-top: 12px; margin-top: 10px;">
-          <div style="font-size: 0.85rem; font-weight: 700; color: var(--accent-secondary); margin-bottom: 6px;"> 캔버스 크기 조절 (여백)</div>
+          <div style="font-size: 0.85rem; font-weight: 700; color: var(--accent-secondary); margin-bottom: 6px;"> 캔버스 크기
+            조절 (여백)</div>
           <div style="display: flex; gap: 8px; align-items: center;">
             <div style="flex: 1; display: flex; flex-direction: column; gap: 2px;">
               <span style="font-size: 0.72rem; color: var(--text-muted);">가로(W)</span>
               <div style="display: flex; align-items: center; gap: 2px;">
-                <input type="number" id="numInspectorCanvasWidth" min="1" class="num-input" style="width: 100%; text-align: center;">
+                <input type="number" id="numInspectorCanvasWidth" min="1" class="num-input"
+                  style="width: 100%; text-align: center;">
                 <span style="font-size: 0.72rem;">px</span>
               </div>
             </div>
             <div style="flex: 1; display: flex; flex-direction: column; gap: 2px;">
               <span style="font-size: 0.72rem; color: var(--text-muted);">세로(H)</span>
               <div style="display: flex; align-items: center; gap: 2px;">
-                <input type="number" id="numInspectorCanvasHeight" min="1" class="num-input" style="width: 100%; text-align: center;">
+                <input type="number" id="numInspectorCanvasHeight" min="1" class="num-input"
+                  style="width: 100%; text-align: center;">
                 <span style="font-size: 0.72rem;">px</span>
               </div>
             </div>
           </div>
           <div style="display: flex; gap: 6px; margin-top: 8px;">
-            <button class="btn-secondary" id="btnInspectorApplyCanvasSize" style="flex: 1; justify-content: center; font-size: 0.72rem; padding: 5px 0;">
-               크기 변경
+            <button class="btn-secondary" id="btnInspectorApplyCanvasSize"
+              style="flex: 1; justify-content: center; font-size: 0.72rem; padding: 5px 0;">
+              크기 변경
             </button>
-            <button class="btn-primary" id="btnInspectorFitMargin" style="flex: 1; justify-content: center; font-size: 0.72rem; padding: 5px 0;" title="코코포리아 그리드 크기는 24픽셀 입니다. 크기가 맞아 떨어지게 , 24배수에 맞춰서 여백을 늘립니다.">
+            <button class="btn-primary" id="btnInspectorFitMargin"
+              style="flex: 1; justify-content: center; font-size: 0.72rem; padding: 5px 0;"
+              title="코코포리아 그리드 크기는 24픽셀 입니다. 크기가 맞아 떨어지게 , 24배수에 맞춰서 여백을 늘립니다.">
               맞춤여백
             </button>
           </div>
@@ -1870,6 +2194,71 @@
   <!-- Auto-Save Toast Notification -->
   <div class="autosave-toast" id="autoSaveToast">
     <span>자동 저장 완료</span>
+  </div>
+
+  <!-- Floating Notice Circle Button -->
+  <button class="btn-notice-floating" id="btnNoticeOpen" title="안내사항 열기">?</button>
+
+  <!-- Notice Modal Overlay -->
+  <div class="notice-modal-overlay" id="noticeModal">
+    <div class="notice-modal-box">
+      <div class="notice-header">
+        <div class="notice-title">
+          <span>● NOTICE</span>
+        </div>
+        <button class="notice-close-btn" id="btnNoticeClose">X</button>
+      </div>
+      <div class="notice-body">
+        <div class="notice-tabs-row">
+          <button class="notice-tab-btn active" id="tabNoticeCaution">주의사항 및 문의 안내</button>
+          <button class="notice-tab-btn" id="tabNoticeFeatures">주요 기능</button>
+          <button class="notice-tab-btn" id="tabNoticeGgundy">GGUNDY</button>
+        </div>
+        <div class="notice-content-area">
+          <!-- Tab 1: 주의사항 및 문의 안내 -->
+          <div class="notice-content-pane active" id="paneNoticeCaution">
+            <p>본 도구는(<strong>@Hamurabi_F</strong>)의 개인적인 작업 편의를 위해 제작된 비공식 웹 툴이며,<br>개발 과정에 일부 바이브 코딩이 활용되었습니다.</p>
+            <p>업로드하신 ZIP, PSD, 이미지 파일은 외부 서버로 전송되지 않으며,<br>오직 사용자의 브라우저(기기) 내에서만 안전하게 처리됩니다.</p>
+            <p>코드 자체의 무단 재판매 및 유료 배포는 금지합니다.<br>단, 개인 목적의 코드 수정, 기능 개선 및 이를 바탕으로 한 재배포는 자유롭게가능합니다.</p>
+            <p style="margin-top: 4px;"><strong>미리보기 화면 안내:</strong><br>브라우저 렉 현상을 최대한 방지하기 위해,<br>뷰 화면의 이미지는 실제보다 낮은
+              화질로 렌더링됩니다.</p>
+            <p style="margin-top: 4px;"><strong>APNG 미리보기 관련:</strong><br>프리뷰 재생 중 프레임이 깜빡이거나 일부 깨져 보일 수 있으나, 이는 화면 렌더링
+              부하를 줄이기 위한 것으로 실제 저장되는 최종 파일에는 전혀 문제가 없으니 안심하고 다운로드해 주세요.</p>
+            <p style="margin-top: 4px;"><strong>기능 건의 안내:</strong><br>코코포리아를 거치지 않고 자체적으로 맵을 생성/제작하는 기능은 코코포리아 공식 서비스의
+              정책 및 유료 영역을 침해할 수 있어 건의를 받지 않습니다. 양해 부탁드립니다.</p>
+            <p style="margin-top: 4px;"><strong>문의:</strong><br><a href="https://open.kakao.com/o/s36mrXAf">오픈카톡 링크</a>
+            </p>
+          </div>
+
+          <!-- Tab 2: 주요 기능 -->
+          <div class="notice-content-pane" id="paneNoticeFeatures">
+            <p><strong>1. 파일 불러오기 &amp; 멀티 포맷 인식</strong><br>
+              - 코코포리아 백업 ZIP (data.json 포함), 포토샵 PSD 레이어, 일반 이미지(PNG/JPG/APNG 등) 및 폴더를 자유롭게 불러올 수 있습니다.</p>
+            <p style="margin-top: 4px;"><strong>2. 마스터 &amp; 개별 에셋 색상 보정</strong><br>
+              - 색조(Hue), 채도(Sat), 밝기(Bri), 대비(Con), 노출(Exp) 조절<br>
+              - 포토샵 스타일 그라데이션 맵 &amp; RGB 톤 커브 편집<br>
+              - 커스텀 보정 프리셋 저장 및 개별 에셋 전용 보정 오프셋 지원</p>
+            <p style="margin-top: 4px;"><strong>3. 코코포리아 룸 &amp; PSD 레이어 배치 뷰어</strong><br>
+              - Z-Index 및 레이어 배치 실시간 2D 캔버스 렌더링 <br>
+              - 레이어 스택 패널을 제공하여 이미지 확인이 용이합니다.</p>
+            <p style="margin-top: 4px;"><strong>4. APNG / 정적 이미지 용량 자동 압축</strong><br>
+              - 코코포리아 업로드 제한(4.8MB) 이하 자동 단계별 압축하여 화질 손실을 줄입니다.<br>
+              - APNG 애니메이션 루프/반복 재생 횟수 설정을 변경한 경우 저장시 별도로 확인해주세요.</p>
+            <p style="margin-top: 4px;"><strong>5. 24px 맞춤여백 &amp; 코코포리아 ZIP 내보내기</strong><br>
+              - 코코포리아 그리드 배수(24px)에 맞춘 캔버스 맞춤여백 일괄 처리<br>
+              -이미지를 변경 후 data.json 자동 동기화 ZIP 패킹하여 그대로 코코포리아에 사용 가능하게 합니다.</p>
+          </div>
+
+          <!-- Tab 3: GGUNDY -->
+          <div class="notice-content-pane" id="paneNoticeGgundy"
+            style="align-items: center; justify-content: center; padding: 6px 0;">
+            <img src="important.png" alt="GGUNDY Important"
+              style="max-width: 100%; height: auto; border: 2px solid #111111; box-shadow: 3px 3px 0 rgba(17,17,17,0.15);">
+            <p>멋진 개.
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <script>
@@ -1906,10 +2295,10 @@
 
       // Curves Control Points for RGB
       curves: {
-        all: [{x:0, y:0}, {x:255, y:255}],
-        r: [{x:0, y:0}, {x:255, y:255}],
-        g: [{x:0, y:0}, {x:255, y:255}],
-        b: [{x:0, y:0}, {x:255, y:255}]
+        all: [{ x: 0, y: 0 }, { x: 255, y: 255 }],
+        r: [{ x: 0, y: 0 }, { x: 255, y: 255 }],
+        g: [{ x: 0, y: 0 }, { x: 255, y: 255 }],
+        b: [{ x: 0, y: 0 }, { x: 255, y: 255 }]
       },
       activeCurveChannel: 'all',
 
@@ -2002,17 +2391,17 @@
 
     function getCurvePresetPoints(presetKey) {
       switch (presetKey) {
-        case 'contrast': return [{x:0, y:0}, {x:64, y:30}, {x:192, y:225}, {x:255, y:255}];
-        case 'darken': return [{x:0, y:0}, {x:128, y:70}, {x:255, y:255}];
-        case 'brighten': return [{x:0, y:0}, {x:128, y:180}, {x:255, y:255}];
-        case 'linear': default: return [{x:0, y:0}, {x:255, y:255}];
+        case 'contrast': return [{ x: 0, y: 0 }, { x: 64, y: 30 }, { x: 192, y: 225 }, { x: 255, y: 255 }];
+        case 'darken': return [{ x: 0, y: 0 }, { x: 128, y: 70 }, { x: 255, y: 255 }];
+        case 'brighten': return [{ x: 0, y: 0 }, { x: 128, y: 180 }, { x: 255, y: 255 }];
+        case 'linear': default: return [{ x: 0, y: 0 }, { x: 255, y: 255 }];
       }
     }
 
     function buildCurveLUT(points) {
       const lut = new Uint8Array(256);
       const pts = [...points].sort((a, b) => a.x - b.x);
-      
+
       for (let i = 0; i < 256; i++) {
         if (i <= pts[0].x) {
           lut[i] = pts[0].y;
@@ -2127,16 +2516,16 @@
         const hue2rgb = (p, q, t) => {
           if (t < 0) t += 1;
           if (t > 1) t -= 1;
-          if (t < 1/6) return p + (q - p) * 6 * t;
-          if (t < 1/2) return q;
-          if (t < 2/3) return p + (q - p) * (2/3 - t) * 6;
+          if (t < 1 / 6) return p + (q - p) * 6 * t;
+          if (t < 1 / 2) return q;
+          if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
           return p;
         };
         const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
         const p = 2 * l - q;
-        r = hue2rgb(p, q, h + 1/3);
+        r = hue2rgb(p, q, h + 1 / 3);
         g = hue2rgb(p, q, h);
-        b = hue2rgb(p, q, h - 1/3);
+        b = hue2rgb(p, q, h - 1 / 3);
       }
       return { r: r * 255, g: g * 255, b: b * 255 };
     }
@@ -2160,10 +2549,10 @@
           ],
           activeStopIndex: 0,
           curves: {
-            all: [{x:0, y:0}, {x:255, y:255}],
-            r: [{x:0, y:0}, {x:255, y:255}],
-            g: [{x:0, y:0}, {x:255, y:255}],
-            b: [{x:0, y:0}, {x:255, y:255}]
+            all: [{ x: 0, y: 0 }, { x: 255, y: 255 }],
+            r: [{ x: 0, y: 0 }, { x: 255, y: 255 }],
+            g: [{ x: 0, y: 0 }, { x: 255, y: 255 }],
+            b: [{ x: 0, y: 0 }, { x: 255, y: 255 }]
           },
           activeCurveChannel: 'all'
         };
@@ -2194,12 +2583,12 @@
         const expFactor = Math.pow(2, exp / 50);
 
         const masterAllCurveLut = buildCurveLUT(state.curves.all);
-        const assetAllCurveLut = buildCurveLUT(assetOffset.curves?.all || [{x:0, y:0}, {x:255, y:255}]);
+        const assetAllCurveLut = buildCurveLUT(assetOffset.curves?.all || [{ x: 0, y: 0 }, { x: 255, y: 255 }]);
 
         const computeAssetChan = (channelKey) => {
           const lut = new Uint8Array(256);
           const masterChanLut = buildCurveLUT(state.curves[channelKey] || state.curves.all);
-          const assetChanLut = buildCurveLUT(assetOffset.curves?.[channelKey] || [{x:0, y:0}, {x:255, y:255}]);
+          const assetChanLut = buildCurveLUT(assetOffset.curves?.[channelKey] || [{ x: 0, y: 0 }, { x: 255, y: 255 }]);
 
           for (let i = 0; i < 256; i++) {
             let v = i;
@@ -2336,13 +2725,13 @@
         let pos = 8;
         while (pos < data.length - 12) {
           const len = view.getUint32(pos, false);
-          const type = String.fromCharCode(data[pos+4], data[pos+5], data[pos+6], data[pos+7]);
+          const type = String.fromCharCode(data[pos + 4], data[pos + 5], data[pos + 6], data[pos + 7]);
           if (type === 'acTL' && len >= 8) {
             return view.getUint32(pos + 12, false);
           }
           pos += 8 + len + 4;
         }
-      } catch (e) {}
+      } catch (e) { }
       return 0;
     }
 
@@ -2375,7 +2764,7 @@
         let pos = 8;
         while (pos < data.length - 12) {
           const len = view.getUint32(pos, false);
-          const type = String.fromCharCode(data[pos+4], data[pos+5], data[pos+6], data[pos+7]);
+          const type = String.fromCharCode(data[pos + 4], data[pos + 5], data[pos + 6], data[pos + 7]);
           if (type === 'acTL' && len >= 8) {
             view.setUint32(pos + 12, numPlays, false);
             const chunkTypeAndData = data.subarray(pos + 4, pos + 4 + 4 + len);
@@ -2732,7 +3121,7 @@
         if (jsonEntry) {
           state.jsonFileName = jsonEntry.name.split('/').pop().split('\\').pop() || 'data.json';
           const jsonText = await jsonEntry.async('text');
-          try { ccfoliaJsonData = JSON.parse(jsonText); } catch (e) {}
+          try { ccfoliaJsonData = JSON.parse(jsonText); } catch (e) { }
         }
 
         const entries = Object.keys(zip.files);
@@ -2792,17 +3181,35 @@
     }
 
     async function loadMultipleImageFiles(files) {
-      state.filesMap.clear();
-      state.originalZip = null;
-      state.ccfoliaData = null;
-      state.psdData = null;
-      state.mode = 'image';
+      if (state.mode !== 'image') {
+        state.filesMap.clear();
+        state.originalZip = null;
+        state.ccfoliaData = null;
+        state.psdData = null;
+        state.mode = 'image';
+      }
 
       let count = 0;
+      let lastAddedFileName = null;
       for (const file of files) {
         count++;
         updateModalProgress(`이미지 파싱 중 (${count}/${files.length})`, file.name);
         const relativePath = file.webkitRelativePath || file.name;
+
+        // 중복 파일명 방지를 위한 고유 키 생성
+        let targetName = relativePath;
+        if (state.filesMap.has(targetName)) {
+          const lastDot = targetName.lastIndexOf('.');
+          const base = lastDot !== -1 ? targetName.substring(0, lastDot) : targetName;
+          const ext = lastDot !== -1 ? targetName.substring(lastDot) : '';
+          let dupCounter = 1;
+          while (state.filesMap.has(`${base}_${dupCounter}${ext}`)) {
+            dupCounter++;
+          }
+          targetName = `${base}_${dupCounter}${ext}`;
+        }
+        lastAddedFileName = targetName;
+
         const arrayBuffer = await file.arrayBuffer();
         const blob = new Blob([arrayBuffer]);
         const imageElement = await loadImageElement(blob);
@@ -2810,8 +3217,8 @@
         const apngData = await parseAPNGIfPossible(arrayBuffer);
         const origNumPlays = apngData ? extractApngNumPlays(arrayBuffer) : 0;
 
-        state.filesMap.set(relativePath, {
-          name: relativePath,
+        state.filesMap.set(targetName, {
+          name: targetName,
           blob: blob,
           arrayBuffer: arrayBuffer,
           imageElement: imageElement,
@@ -2830,7 +3237,11 @@
       setModeBadge('image', '일반 이미지 모드');
       setActiveTab('grid');
       updateUIState();
+      if (lastAddedFileName) {
+        selectAsset(lastAddedFileName);
+      }
       hideModal();
+      showAutoSaveToast(`🖼️ ${files.length}개의 이미지가 추가되었습니다.`);
     }
 
     function loadImageElement(blob) {
@@ -2934,7 +3345,7 @@
         const isEffVisible = isLayerEffectiveVisible(fileData);
         const tile = document.createElement('div');
         tile.className = 'grid-tile' + (state.selectedFileName === filename ? ' selected' : '') + (!isEffVisible ? ' hidden-layer' : '');
-        
+
         tile.onclick = () => {
           selectAsset(filename);
           openSingleInspectorModal(filename);
@@ -3295,7 +3706,7 @@
       const stopsBar = document.getElementById('psStopsBar');
       const rampContainer = document.getElementById('psGradientRampContainer');
 
-      window.renderPhotoshopGradientUI = function() {
+      window.renderPhotoshopGradientUI = function () {
         updateGradientLUT();
 
         const stops = [...state.master.gradStops].sort((a, b) => a.pos - b.pos);
@@ -3415,7 +3826,7 @@
         scheduleRefreshPreviews();
       };
 
-      window.applyGradientPreset = function(presetKey) {
+      window.applyGradientPreset = function (presetKey) {
         state.master.gradEnabled = true;
         document.getElementById('toggleGrad').checked = true;
 
@@ -3487,7 +3898,7 @@
           if (!isLayerEffectiveVisible(fileData)) continue; // Skip non-effective visible layers
 
           const renderCanvas = createRecoloredCanvas(fileData, false);
-          
+
           // Absolute layer top-left offset relative to PSD document center (-psdW/2, -psdH/2)
           const lx = -psdW / 2 + (fileData.left !== undefined ? fileData.left : 0);
           const ly = -psdH / 2 + (fileData.top !== undefined ? fileData.top : 0);
@@ -3927,11 +4338,11 @@
         if (state.mode === 'ccfolia') {
           // 1. 새 이미지의 SHA-256 해시 계산
           const newHash = await calculateSHA256(arrayBuf);
-          
+
           const oldFilename = filename.split('/').pop().split('\\').pop();
           const extIdx = oldFilename.lastIndexOf('.');
           const hasExt = extIdx !== -1;
-          
+
           const oldHashBase = hasExt ? oldFilename.substring(0, extIdx) : oldFilename;
           const newFilename = hasExt ? `${newHash}${oldFilename.substring(extIdx)}` : newHash;
 
@@ -4006,7 +4417,7 @@
           }
         }
         jsonDownloadFileName = dataJsonPath.split('/').pop().split('\\').pop() || 'data.json';
-        exportZip.file(dataJsonPath, exportedDataJsonStr); 
+        exportZip.file(dataJsonPath, exportedDataJsonStr);
       }
 
       updateModalProgress('ZIP 압축 패킹 중...', '다운로드 준비 중');
@@ -4084,14 +4495,14 @@
       return fileData.visible !== false;
     }
 
-    window.toggleAllPsdLayers = function(visibleState) {
+    window.toggleAllPsdLayers = function (visibleState) {
       for (const fd of state.filesMap.values()) {
         fd.visible = visibleState;
       }
       scheduleRefreshPreviews();
     };
 
-    window.resetAllPsdSolo = function() {
+    window.resetAllPsdSolo = function () {
       for (const fd of state.filesMap.values()) {
         fd.solo = false;
       }
@@ -4260,7 +4671,7 @@
     function saveCustomPresets() {
       try {
         localStorage.setItem('color_studio_custom_presets', JSON.stringify(customPresets));
-      } catch (e) {}
+      } catch (e) { }
     }
 
     function renderCustomPresetsUI() {
@@ -4566,7 +4977,7 @@
         if (jsonStr.length < 4800000) {
           localStorage.setItem('color_studio_session_backup', jsonStr);
         }
-      } catch (e) {}
+      } catch (e) { }
     }
 
     let saveDebounceTimer = null;
@@ -4622,7 +5033,7 @@
             if (jsonStr.length < 4800000) {
               localStorage.setItem('color_studio_session_backup', jsonStr);
             }
-          } catch (lsErr) {}
+          } catch (lsErr) { }
 
           showAutoSaveToast('💾 작업 내역이 자동 저장되었습니다.');
         } catch (e) {
@@ -4645,13 +5056,13 @@
             request.onsuccess = () => resolve(request.result);
             request.onerror = () => resolve(null);
           });
-        } catch (idbErr) {}
+        } catch (idbErr) { }
 
         // 2. Fallback to localStorage backup if IndexedDB was empty
         if (!payload || !payload.files || payload.files.length === 0) {
           const lsData = localStorage.getItem('color_studio_session_backup');
           if (lsData) {
-            try { payload = JSON.parse(lsData); } catch (pErr) {}
+            try { payload = JSON.parse(lsData); } catch (pErr) { }
           }
         }
 
@@ -4676,7 +5087,7 @@
 
           let blob = null;
           if (f.dataUrl) {
-            try { blob = dataURLToBlob(f.dataUrl); } catch (e) {}
+            try { blob = dataURLToBlob(f.dataUrl); } catch (e) { }
           } else if (f.blob && f.blob instanceof Blob) {
             blob = f.blob;
           }
@@ -4752,9 +5163,9 @@
           const db = await openAutoSaveDB();
           const tx = db.transaction(STORE_NAME, 'readwrite');
           tx.objectStore(STORE_NAME).delete('currentSession');
-        } catch (e) {}
+        } catch (e) { }
 
-        try { localStorage.removeItem('color_studio_session_backup'); } catch (e) {}
+        try { localStorage.removeItem('color_studio_session_backup'); } catch (e) { }
 
         state.filesMap.clear();
         state.mode = 'image';
@@ -4878,7 +5289,7 @@
         };
       }
 
-      window.applyAssetGradPreset = function(presetKey) {
+      window.applyAssetGradPreset = function (presetKey) {
         if (!state.selectedFileName) return;
         const fd = state.filesMap.get(state.selectedFileName);
         if (!fd) return;
@@ -4930,10 +5341,10 @@
           activeStopIndex: 0
         };
         state.curves = {
-          all: [{x:0, y:0}, {x:255, y:255}],
-          r: [{x:0, y:0}, {x:255, y:255}],
-          g: [{x:0, y:0}, {x:255, y:255}],
-          b: [{x:0, y:0}, {x:255, y:255}]
+          all: [{ x: 0, y: 0 }, { x: 255, y: 255 }],
+          r: [{ x: 0, y: 0 }, { x: 255, y: 255 }],
+          g: [{ x: 0, y: 0 }, { x: 255, y: 255 }],
+          b: [{ x: 0, y: 0 }, { x: 255, y: 255 }]
         };
         document.getElementById('sliderHue').value = 0; document.getElementById('numHue').value = 0;
         document.getElementById('sliderSat').value = 100; document.getElementById('numSat').value = 100;
@@ -5095,7 +5506,7 @@
           const pw = item.width * gridUnit;
           const ph = item.height * gridUnit;
 
-          if (mouseX >= itemCx - pw/2 && mouseX <= itemCx + pw/2 && mouseY >= itemCy - ph/2 && mouseY <= itemCy + ph/2) {
+          if (mouseX >= itemCx - pw / 2 && mouseX <= itemCx + pw / 2 && mouseY >= itemCy - ph / 2 && mouseY <= itemCy + ph / 2) {
             const findFn = window.findFileData || ((id) => {
               const cleanId = (id || '').split('?')[0].split('#')[0].split('/').pop().split('\\').pop().toLowerCase();
               for (const [fn, fd] of state.filesMap.entries()) {
@@ -5116,8 +5527,8 @@
       document.getElementById('tabRoomView').onclick = () => setActiveTab('room');
       document.getElementById('tabGridView').onclick = () => setActiveTab('grid');
       document.getElementById('btnExportZip').onclick = exportProcessedZip;
-      document.getElementById('fileInputImages').onchange = (e) => handleFileEntries(e.target.files);
-      document.getElementById('fileInputFolder').onchange = (e) => handleFileEntries(e.target.files);
+      document.getElementById('fileInputImages').onchange = (e) => { handleFileEntries(e.target.files); e.target.value = ''; };
+      document.getElementById('fileInputFolder').onchange = (e) => { handleFileEntries(e.target.files); e.target.value = ''; };
 
       const dropzone = document.getElementById('dropzoneHeader');
       if (dropzone) {
@@ -5279,7 +5690,7 @@
             if (jsonStr.length < 4800000) {
               localStorage.setItem('color_studio_session_backup', jsonStr);
             }
-          } catch (e) {}
+          } catch (e) { }
         }
       });
     }
@@ -5295,7 +5706,7 @@
 
       const getPoints = () => state.curves[state.activeCurveChannel];
 
-      window.drawCurveCanvas = function() {
+      window.drawCurveCanvas = function () {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
         ctx.strokeStyle = 'rgba(17,17,17,0.15)';
@@ -5373,19 +5784,19 @@
       window.addEventListener('mouseup', () => { draggingPointIndex = -1; });
 
       document.getElementById('presetLinear').onclick = () => {
-        state.curves[state.activeCurveChannel] = [{x:0, y:0}, {x:255, y:255}];
+        state.curves[state.activeCurveChannel] = [{ x: 0, y: 0 }, { x: 255, y: 255 }];
         drawCurveCanvas(); scheduleRefreshPreviews();
       };
       document.getElementById('presetContrast').onclick = () => {
-        state.curves[state.activeCurveChannel] = [{x:0, y:0}, {x:64, y:30}, {x:192, y:225}, {x:255, y:255}];
+        state.curves[state.activeCurveChannel] = [{ x: 0, y: 0 }, { x: 64, y: 30 }, { x: 192, y: 225 }, { x: 255, y: 255 }];
         drawCurveCanvas(); scheduleRefreshPreviews();
       };
       document.getElementById('presetDarken').onclick = () => {
-        state.curves[state.activeCurveChannel] = [{x:0, y:0}, {x:128, y:70}, {x:255, y:255}];
+        state.curves[state.activeCurveChannel] = [{ x: 0, y: 0 }, { x: 128, y: 70 }, { x: 255, y: 255 }];
         drawCurveCanvas(); scheduleRefreshPreviews();
       };
       document.getElementById('presetBrighten').onclick = () => {
-        state.curves[state.activeCurveChannel] = [{x:0, y:0}, {x:128, y:180}, {x:255, y:255}];
+        state.curves[state.activeCurveChannel] = [{ x: 0, y: 0 }, { x: 128, y: 180 }, { x: 255, y: 255 }];
         drawCurveCanvas(); scheduleRefreshPreviews();
       };
 
@@ -5408,7 +5819,7 @@
       const stopsBar = document.getElementById('assetPsStopsBar');
       const rampContainer = document.getElementById('assetPsGradientRampContainer');
 
-      window.renderAssetGradientUI = function() {
+      window.renderAssetGradientUI = function () {
         if (!state.selectedFileName) return;
         const fileData = state.filesMap.get(state.selectedFileName);
         if (!fileData) return;
@@ -5578,7 +5989,7 @@
         };
       }
 
-      window.applyAssetGradientPreset = function(presetKey) {
+      window.applyAssetGradientPreset = function (presetKey) {
         if (!state.selectedFileName) return;
         const fd = state.filesMap.get(state.selectedFileName);
         if (!fd) return;
@@ -5612,15 +6023,15 @@
       let draggingPointIndex = -1;
 
       const getPoints = () => {
-        if (!state.selectedFileName) return [{x:0, y:0}, {x:255, y:255}];
+        if (!state.selectedFileName) return [{ x: 0, y: 0 }, { x: 255, y: 255 }];
         const fd = state.filesMap.get(state.selectedFileName);
-        if (!fd) return [{x:0, y:0}, {x:255, y:255}];
+        if (!fd) return [{ x: 0, y: 0 }, { x: 255, y: 255 }];
         const offset = getAssetOffset(fd);
         const chan = offset.activeCurveChannel || 'all';
         return offset.curves[chan];
       };
 
-      window.drawAssetCurveCanvas = function() {
+      window.drawAssetCurveCanvas = function () {
         if (!canvas) return;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -5716,10 +6127,10 @@
         scheduleRefreshPreviews();
       };
 
-      if (document.getElementById('presetAssetLinear')) document.getElementById('presetAssetLinear').onclick = () => setCurvePreset([{x:0, y:0}, {x:255, y:255}]);
-      if (document.getElementById('presetAssetContrast')) document.getElementById('presetAssetContrast').onclick = () => setCurvePreset([{x:0, y:0}, {x:64, y:30}, {x:192, y:225}, {x:255, y:255}]);
-      if (document.getElementById('presetAssetDarken')) document.getElementById('presetAssetDarken').onclick = () => setCurvePreset([{x:0, y:0}, {x:128, y:70}, {x:255, y:255}]);
-      if (document.getElementById('presetAssetBrighten')) document.getElementById('presetAssetBrighten').onclick = () => setCurvePreset([{x:0, y:0}, {x:128, y:180}, {x:255, y:255}]);
+      if (document.getElementById('presetAssetLinear')) document.getElementById('presetAssetLinear').onclick = () => setCurvePreset([{ x: 0, y: 0 }, { x: 255, y: 255 }]);
+      if (document.getElementById('presetAssetContrast')) document.getElementById('presetAssetContrast').onclick = () => setCurvePreset([{ x: 0, y: 0 }, { x: 64, y: 30 }, { x: 192, y: 225 }, { x: 255, y: 255 }]);
+      if (document.getElementById('presetAssetDarken')) document.getElementById('presetAssetDarken').onclick = () => setCurvePreset([{ x: 0, y: 0 }, { x: 128, y: 70 }, { x: 255, y: 255 }]);
+      if (document.getElementById('presetAssetBrighten')) document.getElementById('presetAssetBrighten').onclick = () => setCurvePreset([{ x: 0, y: 0 }, { x: 128, y: 180 }, { x: 255, y: 255 }]);
 
       if (document.getElementById('selectAssetCurveChannel')) {
         document.getElementById('selectAssetCurveChannel').onchange = (e) => {
@@ -5733,6 +6144,65 @@
       }
     }
 
+    /* ==========================================================================
+       15. Notice (FAQ/Help) Modal Widget
+       ========================================================================== */
+
+    function setupNoticeWidget() {
+      const btnNoticeOpen = document.getElementById('btnNoticeOpen');
+      const btnNoticeClose = document.getElementById('btnNoticeClose');
+      const noticeModal = document.getElementById('noticeModal');
+      const tabNoticeCaution = document.getElementById('tabNoticeCaution');
+      const tabNoticeFeatures = document.getElementById('tabNoticeFeatures');
+      const tabNoticeGgundy = document.getElementById('tabNoticeGgundy');
+      const paneNoticeCaution = document.getElementById('paneNoticeCaution');
+      const paneNoticeFeatures = document.getElementById('paneNoticeFeatures');
+      const paneNoticeGgundy = document.getElementById('paneNoticeGgundy');
+
+      if (btnNoticeOpen && noticeModal) {
+        btnNoticeOpen.onclick = () => {
+          noticeModal.classList.add('show');
+        };
+      }
+      if (btnNoticeClose && noticeModal) {
+        btnNoticeClose.onclick = () => {
+          noticeModal.classList.remove('show');
+        };
+      }
+      if (noticeModal) {
+        noticeModal.onclick = (e) => {
+          if (e.target === noticeModal) {
+            noticeModal.classList.remove('show');
+          }
+        };
+      }
+
+      const tabs = [
+        { btn: tabNoticeCaution, pane: paneNoticeCaution },
+        { btn: tabNoticeFeatures, pane: paneNoticeFeatures },
+        { btn: tabNoticeGgundy, pane: paneNoticeGgundy }
+      ];
+
+      tabs.forEach(tab => {
+        if (tab.btn && tab.pane) {
+          tab.btn.onclick = () => {
+            tabs.forEach(t => {
+              if (t.btn) t.btn.classList.remove('active');
+              if (t.pane) t.pane.classList.remove('active');
+            });
+            tab.btn.classList.add('active');
+            tab.pane.classList.add('active');
+          };
+        }
+      });
+
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && noticeModal && noticeModal.classList.contains('show')) {
+          noticeModal.classList.remove('show');
+        }
+      });
+    }
+
     /* Init Application */
     window.addEventListener('DOMContentLoaded', async () => {
       setupEventListeners();
@@ -5740,10 +6210,12 @@
       setupPhotoshopGradientWidget();
       setupAssetGradientWidget();
       setupAssetCurveWidget();
+      setupNoticeWidget();
       loadCustomPresets();
       updateUIState();
       await restoreAutoSavedSession();
     });
   </script>
 </body>
+
 </html>

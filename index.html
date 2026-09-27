@@ -841,7 +841,7 @@
       top: 16px;
       right: 16px;
       width: 260px;
-      max-height: calc(100% - 32px);
+      max-height: calc(100% - 200px);
       background: var(--bg-panel);
       border: 1.5px solid var(--border-strong);
       border-radius: 0;
@@ -871,7 +871,7 @@
       display: flex;
       flex-direction: column;
       gap: 4px;
-      max-height: 320px;
+      max-height: calc(100vh - 180px);
       overflow-y: auto;
       padding: 8px;
     }
@@ -1572,19 +1572,23 @@
       user-select: none;
       outline: none;
     }
+
     .btn-ggundy-like .heart-icon {
       color: #80a6c8;
       transition: all 0.25s ease;
       flex-shrink: 0;
     }
+
     .btn-ggundy-like:hover {
       transform: translateY(-2px);
       box-shadow: 3px 3px 0 rgba(17, 17, 17, 0.3);
       background: rgba(128, 166, 200, 0.08);
     }
+
     .btn-ggundy-like:hover .heart-icon {
       transform: scale(1.15);
     }
+
     .btn-ggundy-like:active {
       transform: translateY(0);
       box-shadow: 1px 1px 0 rgba(17, 17, 17, 0.2);
@@ -1596,9 +1600,17 @@
     }
 
     @keyframes heartPulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.35); }
-      100% { transform: scale(1); }
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.35);
+      }
+
+      100% {
+        transform: scale(1);
+      }
     }
   </style>
 </head>
@@ -1991,21 +2003,6 @@
 
       <div class="panel-content" id="assetDetailPanelContent">
 
-        <!-- PSD Layer Panel Section in Right Sidebar -->
-        <div class="psd-layer-stack-panel" id="psdRightLayerPanelWrapper"
-          style="display: none; flex-direction: column; gap: 8px; margin-bottom: 16px;">
-          <div class="psd-layer-panel-header" style="border-radius: 6px;">
-            <span>PSD 레이어 목록</span>
-            <div style="display: flex; gap: 4px;">
-              <button class="btn-xs" onclick="toggleAllPsdLayers(true)">전체</button>
-              <button class="btn-xs" onclick="toggleAllPsdLayers(false)">숨김</button>
-              <button class="btn-xs" onclick="resetAllPsdSolo()">Solo</button>
-            </div>
-          </div>
-          <div class="psd-layer-list" id="psdRightLayerList" style="max-height: 220px;">
-            <!-- Dynamically populated layer items -->
-          </div>
-        </div>
 
         <div style="font-size: 0.8rem; color: var(--text-dim); text-align: center; padding: 20px 0;"
           id="assetNoSelectText">
@@ -2366,17 +2363,21 @@
         <div class="notice-content-area">
           <!-- Tab 1: 주의사항 및 문의 안내 -->
           <div class="notice-content-pane active" id="paneNoticeCaution">
-            <p>본 도구는(<strong>@Hamurabi_F</strong>)의 개인적인 작업 편의를 위해 제작된 비공식 웹 툴이며,<br>개발 과정에 일부 바이브 코딩이 활용되었습니다.</p>
+            <p>본 도구는(<strong><a href="https://x.com/Hamurabi_F" target="_blank" rel="noopener noreferrer">@Hamurabi_F</a></strong>)의 개인적인 작업 편의를 위해 제작된 비공식 웹 툴이며,<br>개발 과정에 일부 바이브 코딩이 활용되었습니다.</p>
             <p>업로드하신 ZIP, PSD, 이미지 파일은 외부 서버로 전송되지 않으며,<br>오직 사용자의 브라우저(기기) 내에서만 안전하게 처리됩니다.</p>
-            <p>코드 자체의 무단 재판매 및 유료 배포는 금지합니다.<br>단, 개인 목적의 코드 수정, 기능 개선 및 이를 바탕으로 한 재배포는 자유롭게가능합니다.</p>
+            <p>코드 자체의 무단 재판매 및 유료 배포는 금지합니다.<br>단, 개인 목적의 코드 수정, 기능 개선 및 이를 바탕으로 한 재배포는 자유롭게 가능합니다.</p>
             <p style="margin-top: 4px;"><strong>미리보기 화면 안내:</strong><br>브라우저 렉 현상을 최대한 방지하기 위해,<br>뷰 화면의 이미지는 실제보다 낮은
               화질로 렌더링됩니다.</p>
             <p style="margin-top: 4px;"><strong>APNG 미리보기 관련:</strong><br>프리뷰 재생 중 프레임이 깜빡이거나 일부 깨져 보일 수 있으나, 이는 화면 렌더링
               부하를 줄이기 위한 것으로 실제 저장되는 최종 파일에는 전혀 문제가 없으니 안심하고 다운로드해 주세요.</p>
-		    <p style="margin-top: 4px;"><strong>zip 압축해제 관련:</strong><br>Windows 기본 압축 해제 기능 사용 시 오류가 발생 할 수 있습니다.<br>정상적인 파일 확인을 위해 반디집, 알집 등의 압축 프로그램 사용을 권장합니다.
-</p>	  
+            <p style="margin-top: 4px;"><strong>zip 압축해제 관련:</strong><br>Windows 기본 압축 해제 기능 사용 시 오류가 발생 할 수
+              있습니다.<br>정상적인 파일 확인을 위해 반디집, 알집 등의 압축 프로그램 사용을 권장합니다.
+            </p>
+            <p style="margin-top: 4px;"><strong>APNG 코코포리아에 업로드 했을때 뜨는 경고문 관련:</strong><br>이미지를 수정할때 json 파일을 고쳐서 그런 것이니
+              확인버튼을 눌러주세요.<br>faild 경고와 함께 맵세팅이 적용되지 않는다면 파일을 재다운로드하여 시도해보시고,<br>그래도 되지않는다면 버그 문의 부탁드립니다!
+            </p>
             <p style="margin-top: 4px;"><strong>기능 건의 안내:</strong><br>코코포리아를 거치지 않고 자체적으로 맵을 생성/제작하는 기능은 코코포리아 공식 서비스의
-              정책 및 유료 영역을 침해할 수 있어 해당 건의를 받지 않습니다. 양해 부탁드립니다. 그 외 기능 제안 및 버그리포트는 언제든지!</p>
+              정책 및 유료 영역을 침해할 수 있어 해당 건의를 받지 않습니다. 양해 부탁드립니다.<>그 외 기능 제안 및 버그리포트는 언제든지!</p>
             <p style="margin-top: 4px;"><strong>문의:</strong><br><a href="https://open.kakao.com/o/s36mrXAf">오픈카톡 링크</a>
             </p>
           </div>
@@ -2412,8 +2413,11 @@
             <!-- Bottom Right Like Button Container -->
             <div style="align-self: flex-end; margin-top: 14px; display: flex; align-items: center;">
               <button class="btn-ggundy-like" id="btnGgundyLike" title="좋아요 / 추천하기">
-                <svg class="heart-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
-                  <path d="M2 8.5C2 5.46243 4.46243 3 7.5 3C9.36016 3 11.0046 3.92345 12 5.33692C12.9954 3.92345 14.6398 3 16.5 3C19.5376 3 22 5.46243 22 8.5C22 16 11.9999 21.4852 11.9999 21.4852C11.9999 21.4852 2 16 2 8.5Z"></path>
+                <svg class="heart-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                  width="20" height="20">
+                  <path
+                    d="M2 8.5C2 5.46243 4.46243 3 7.5 3C9.36016 3 11.0046 3.92345 12 5.33692C12.9954 3.92345 14.6398 3 16.5 3C19.5376 3 22 5.46243 22 8.5C22 16 11.9999 21.4852 11.9999 21.4852C11.9999 21.4852 2 16 2 8.5Z">
+                  </path>
                 </svg>
                 <span class="like-count" id="textGgundyLikeCount">0</span>
               </button>
@@ -4631,7 +4635,7 @@
       document.body.removeChild(a);
       URL.revokeObjectURL(downloadUrl);
 
-     
+
       showAutoSaveToast(` ${a.download} 다운로드가 완료되었습니다.`);
 
       hideModal();
@@ -4689,27 +4693,19 @@
 
     function renderPsdLayerPanel() {
       const floatPanel = document.getElementById('psdFloatingLayerPanel');
-      const rightWrapper = document.getElementById('psdRightLayerPanelWrapper');
 
       if ((state.mode !== 'psd' && state.mode !== 'ccfolia') || state.filesMap.size === 0) {
         if (floatPanel) floatPanel.style.display = 'none';
-        if (rightWrapper) rightWrapper.style.display = 'none';
         return;
       }
 
       if (floatPanel) floatPanel.style.display = 'flex';
-      if (rightWrapper) rightWrapper.style.display = 'flex';
 
       const floatHeaderSpan = floatPanel ? floatPanel.querySelector('.psd-layer-panel-header span') : null;
-      const rightHeaderSpan = rightWrapper ? rightWrapper.querySelector('.psd-layer-panel-header span') : null;
-
       const headerTitle = state.mode === 'ccfolia' ? '코코포리아 룸 레이어' : 'PSD 레이어';
-      const rightHeaderTitle = state.mode === 'ccfolia' ? '룸 레이어 목록 (Z-Index)' : 'PSD 레이어 목록';
       if (floatHeaderSpan) floatHeaderSpan.textContent = headerTitle;
-      if (rightHeaderSpan) rightHeaderSpan.textContent = rightHeaderTitle;
 
       const floatList = document.getElementById('psdFloatingLayerList');
-      const rightList = document.getElementById('psdRightLayerList');
 
       const populateList = (container) => {
         if (!container) return;
@@ -4827,7 +4823,6 @@
       };
 
       populateList(floatList);
-      populateList(rightList);
     }
 
     /* ==========================================================================
@@ -5772,6 +5767,13 @@
         state.roomCamera.zoom = Math.min(10, Math.max(0.01, state.roomCamera.zoom * delta));
         renderRoomView();
       };
+
+      const floatPanel = document.getElementById('psdFloatingLayerPanel');
+      if (floatPanel) {
+        floatPanel.onwheel = (e) => { e.stopPropagation(); };
+        floatPanel.onmousedown = (e) => { e.stopPropagation(); };
+        floatPanel.onclick = (e) => { e.stopPropagation(); };
+      }
 
       document.getElementById('btnRoomZoomIn').onclick = () => { state.roomCamera.zoom = Math.min(10, state.roomCamera.zoom * 1.2); renderRoomView(); };
       document.getElementById('btnRoomZoomOut').onclick = () => { state.roomCamera.zoom = Math.max(0.01, state.roomCamera.zoom / 1.2); renderRoomView(); };

@@ -3,7 +3,10 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=1280">
+  <!-- 모바일에서는 위 width 값을 기준 레이아웃 폭으로 삼아 화면에 맞게 축소 표시됩니다.
+       (반응형 최적화 대신 PC 화면을 그대로 축소해서 보여주는 방식 — 핀치줌으로 확대 가능) -->
+  <meta name="format-detection" content="telephone=no">
   <title>Ccfolia & 이미지 색상 보정 스튜디오 (Color Recolor Studio)</title>
   <meta name="description"
     content="코코포리아(Ccfolia) 백업 ZIP, 포토샵 PSD 및 일반 이미지/APNG 다중 색 color correction 및 룸 뷰어 단일 웹 애플리케이션">
@@ -69,6 +72,7 @@
       background-size: 22px 22px;
       color: var(--text-main);
       height: 100vh;
+      min-width: 1280px;
       overflow: hidden;
       display: flex;
       flex-direction: column;
@@ -1154,21 +1158,98 @@
       background-color: #ffffff;
     }
 
-    /* Empty Placeholder */
+    /* Empty Placeholder (absolute overlay so it doesn't split center-area's flex layout) */
     .empty-state {
-      flex: 1;
+      position: absolute;
+      top: 48px;
+      left: 0;
+      right: 0;
+      bottom: 0;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
+      padding: 16px;
       color: var(--text-muted);
-      padding: 40px;
-      text-align: center;
+      z-index: 15;
     }
 
     .empty-state svg {
       opacity: 0.3;
+    }
+
+    .empty-state-dropzone {
+      flex: 1;
+      width: 100%;
+      border: 2px dashed rgba(17, 17, 17, 0.45);
+      border-radius: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      text-align: center;
+      padding: 40px;
+    }
+
+    .empty-state-dropzone:hover,
+    .empty-state-dropzone.dragover {
+      border-color: var(--border-strong);
+      border-style: solid;
+      background: #11111169;
+      color: #ffffff;
+    }
+
+    .empty-state-dropzone:hover svg,
+    .empty-state-dropzone.dragover svg {
+      opacity: 0.9;
+      color: #ffffff;
+    }
+
+    .empty-state-dropzone-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .empty-state-dropzone.dragover .empty-state-dropzone-actions .btn-file-trigger,
+    .empty-state-dropzone:hover .empty-state-dropzone-actions .btn-file-trigger {
+      background: #ffffff;
+      color: #111111;
+      border-color: #ffffff;
+    }
+
+    /* Full center-area drag overlay — shows on top of grid/room view too, even when files are already loaded */
+    .center-area-drop-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 70;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(17, 17, 17, 0.85);
+      border: 3px dashed #ffffff;
+      pointer-events: none;
+    }
+
+    .center-area-drop-overlay.show {
+      display: flex;
+    }
+
+    .center-area-drop-overlay-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .center-area-drop-overlay-inner svg {
+      opacity: 0.9;
     }
 
     /* Modal / Progress Overlay */
@@ -1792,6 +1873,18 @@
     <!-- Center Area: Main Viewers -->
     <section class="center-area">
 
+      <!-- Full-area drag overlay (covers grid/room view even when files are already loaded) -->
+      <div class="center-area-drop-overlay" id="centerAreaDropOverlay">
+        <div class="center-area-drop-overlay-inner">
+          <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path
+              d="M4 16l4.586-4.586a2 2 0 0 1 2.828 0L16 16m-2-2l1.586-1.586a2 2 0 0 1 2.828 0L20 14m-6-6h.01M6 20h12a2 2 0 0 1 2-2V6a2 2 0 0 1-2-2H6a2 2 0 0 1-2 2v12a2 2 0 0 1 2 2z">
+            </path>
+          </svg>
+          <span>여기에 놓아서 파일 추가</span>
+        </div>
+      </div>
+
       <!-- View Switch Tabs -->
       <div class="viewer-tabs-bar">
         <div class="tabs-group">
@@ -1864,13 +1957,21 @@
 
       <!-- Empty State Overlay (When no files loaded) -->
       <div class="empty-state" id="emptyState">
-        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <path
-            d="M4 16l4.586-4.586a2 2 0 0 1 2.828 0L16 16m-2-2l1.586-1.586a2 2 0 0 1 2.828 0L20 14m-6-6h.01M6 20h12a2 2 0 0 1 2-2V6a2 2 0 0 1-2-2H6a2 2 0 0 1-2 2v12a2 2 0 0 1 2 2z">
-          </path>
-        </svg>
-        <h3>불러온 파일이 없습니다</h3>
-        <p>상단 드롭존에 코코포리아 ZIP 파일, 포토샵 PSD 또는 이미지/폴더를 드래그하거나 선택하세요.</p>
+        <div class="empty-state-dropzone" id="emptyStateDropzone">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path
+              d="M4 16l4.586-4.586a2 2 0 0 1 2.828 0L16 16m-2-2l1.586-1.586a2 2 0 0 1 2.828 0L20 14m-6-6h.01M6 20h12a2 2 0 0 1 2-2V6a2 2 0 0 1-2-2H6a2 2 0 0 1-2 2v12a2 2 0 0 1 2 2z">
+            </path>
+          </svg>
+          <h3>불러온 파일이 없습니다</h3>
+          <p>여기에 코코포리아 ZIP 파일, 포토샵 PSD 또는 이미지/폴더를 드래그하거나 아래 버튼으로 선택하세요.</p>
+          <div class="empty-state-dropzone-actions">
+            <button class="btn-file-trigger" onclick="document.getElementById('fileInputImages').click();">파일
+              선택</button>
+            <button class="btn-file-trigger" onclick="document.getElementById('fileInputFolder').click();">폴더
+              선택</button>
+          </div>
+        </div>
       </div>
 
     </section>
@@ -2334,6 +2435,7 @@
       ccfoliaData: null, // parsed data.json object
       psdData: null, // parsed PSD object { width, height, layers }
       originalZip: null, // JSZip object if loaded from zip
+      originalFileName: null, // 원본 파일/폴더 이름 (확장자 제외) - 내보내기 파일명 생성에 사용
       jsonFileName: 'data.json',
       selectedFileName: null,
 
@@ -2986,6 +3088,7 @@
     async function loadPsdFile(file) {
       try {
         showModal('PSD 파일 파싱 중...', file.name);
+        state.originalFileName = file.name.replace(/\.psd$/i, '');
         const arrayBuffer = await file.arrayBuffer();
 
         const agPsd = window.agPsd;
@@ -3166,6 +3269,7 @@
       try {
         const zip = await JSZip.loadAsync(file);
         state.originalZip = zip;
+        state.originalFileName = file.name.replace(/\.zip$/i, '');
         state.filesMap.clear();
         state.psdData = null;
 
@@ -3249,6 +3353,13 @@
         state.ccfoliaData = null;
         state.psdData = null;
         state.mode = 'image';
+
+        const firstFile = files[0];
+        if (firstFile) {
+          const relPath = firstFile.webkitRelativePath || firstFile.name;
+          const rootFolder = relPath.includes('/') ? relPath.split('/')[0] : null;
+          state.originalFileName = rootFolder || firstFile.name.replace(/\.[^/.]+$/, '');
+        }
       }
 
       let count = 0;
@@ -4509,27 +4620,19 @@
       const downloadUrl = URL.createObjectURL(zipBlob);
       const a = document.createElement('a');
       a.href = downloadUrl;
-      a.download = state.mode === 'psd' ? 'psd_layers_recolored.zip' : state.mode === 'ccfolia' ? 'ccfolia_recolored.zip' : 'recolored_images.zip';
+
+      const fallbackBase = state.mode === 'psd' ? 'psd_layers' : state.mode === 'ccfolia' ? 'ccfolia' : 'recolored_images';
+      const baseName = (state.originalFileName && state.originalFileName.trim()) ? state.originalFileName.trim() : fallbackBase;
+      const safeBaseName = baseName.replace(/[\\/:*?"<>|]+/g, '_');
+      a.download = `${safeBaseName}_recolor.zip`;
+
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
       URL.revokeObjectURL(downloadUrl);
 
-      // 코코포리아 룸 데이터 (JSON) 파일도 함께 다운로드
-      if (state.mode === 'ccfolia' && exportedDataJsonStr) {
-        setTimeout(() => {
-          const jsonBlob = new Blob([exportedDataJsonStr], { type: 'application/json' });
-          const jsonUrl = URL.createObjectURL(jsonBlob);
-          const jsonA = document.createElement('a');
-          jsonA.href = jsonUrl;
-          jsonA.download = jsonDownloadFileName;
-          document.body.appendChild(jsonA);
-          jsonA.click();
-          document.body.removeChild(jsonA);
-          URL.revokeObjectURL(jsonUrl);
-          showAutoSaveToast(`📦 ZIP 및 갱신된 ${jsonDownloadFileName} 이(가) 함께 다운로드되었습니다.`);
-        }, 300);
-      }
+     
+      showAutoSaveToast(` ${a.download} 다운로드가 완료되었습니다.`);
 
       hideModal();
     }
@@ -4831,7 +4934,7 @@
       if (window.drawCurveCanvas) window.drawCurveCanvas();
       scheduleRefreshPreviews();
 
-      showAutoSaveToast(`🎨 '${preset.name}' 프리셋이 적용되었습니다.`);
+      showAutoSaveToast(` '${preset.name}' 프리셋이 적용되었습니다.`);
     }
 
     function deleteCustomPreset(presetId) {
@@ -4841,7 +4944,7 @@
         customPresets = customPresets.filter(p => p.id !== presetId);
         saveCustomPresets();
         renderCustomPresetsUI();
-        showAutoSaveToast(`🗑️ '${preset.name}' 프리셋이 삭제되었습니다.`);
+        showAutoSaveToast(` '${preset.name}' 프리셋이 삭제되었습니다.`);
       }
     }
 
@@ -4861,7 +4964,7 @@
     async function resizeAssetCanvas(fileData, newW, newH) {
       if (!fileData || newW <= 0 || newH <= 0) return;
       if (fileData.width === newW && fileData.height === newH) {
-        showAutoSaveToast(`📐 이미 ${newW}×${newH}px 크기입니다.`);
+        showAutoSaveToast(` 이미 ${newW}×${newH}px 크기입니다.`);
         return;
       }
 
@@ -5248,13 +5351,14 @@
         state.filesMap.clear();
         state.mode = 'image';
         state.originalZip = null;
+        state.originalFileName = null;
         state.ccfoliaData = null;
         state.psdData = null;
         state.selectedFileName = null;
 
         updateUIState();
         scheduleRefreshPreviews();
-        showAutoSaveToast('🗑️ 자동 저장된 작업 내역이 삭제되었습니다.');
+        showAutoSaveToast(' 자동 저장된 작업 내역이 삭제되었습니다.');
       }
     }
 
@@ -5609,17 +5713,40 @@
       document.getElementById('fileInputFolder').onchange = (e) => { handleFileEntries(e.target.files); e.target.value = ''; };
 
       const dropzone = document.getElementById('dropzoneHeader');
+      const emptyDropzone = document.getElementById('emptyStateDropzone');
+      const centerDropOverlay = document.getElementById('centerAreaDropOverlay');
+
+      if (emptyDropzone) {
+        emptyDropzone.onclick = (e) => {
+          if (e.target.tagName !== 'BUTTON' && !e.target.closest('button')) {
+            document.getElementById('fileInputImages').click();
+          }
+        };
+      }
+
       if (dropzone) {
         dropzone.onclick = (e) => {
           if (e.target.tagName !== 'BUTTON' && !e.target.closest('button')) {
             document.getElementById('fileInputImages').click();
           }
         };
-        window.ondragover = (e) => { e.preventDefault(); dropzone.classList.add('dragover'); };
-        window.ondragleave = (e) => { e.preventDefault(); dropzone.classList.remove('dragover'); };
+        window.ondragover = (e) => {
+          e.preventDefault();
+          dropzone.classList.add('dragover');
+          if (emptyDropzone) emptyDropzone.classList.add('dragover');
+          if (centerDropOverlay) centerDropOverlay.classList.add('show');
+        };
+        window.ondragleave = (e) => {
+          e.preventDefault();
+          dropzone.classList.remove('dragover');
+          if (emptyDropzone) emptyDropzone.classList.remove('dragover');
+          if (centerDropOverlay) centerDropOverlay.classList.remove('show');
+        };
         window.ondrop = (e) => {
           e.preventDefault();
           dropzone.classList.remove('dragover');
+          if (emptyDropzone) emptyDropzone.classList.remove('dragover');
+          if (centerDropOverlay) centerDropOverlay.classList.remove('show');
           if (e.dataTransfer.files.length > 0) handleFileEntries(e.dataTransfer.files);
         };
       }
